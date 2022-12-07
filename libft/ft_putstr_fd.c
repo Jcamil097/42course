@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jumoncad <jumoncad@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 22:34:03 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/06 12:52:50 by jumoncad         ###   ########.fr       */
+/*   Created: 2022/12/06 16:08:45 by jumoncad          #+#    #+#             */
+/*   Updated: 2022/12/06 16:41:10 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
-{
-	unsigned int	i;
+#include "libft.h"
 
-	if (!s || !f)
-		return ;
-	i = 0;
-	while (s[i])
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	x;
+
+	x = 0;
+	while (s[x] != '\0')
 	{
-		(*f)(i, &s[i]);
-		i++;
+		ft_putchar_fd(s[x], fd);
+		x++;
 	}
 }

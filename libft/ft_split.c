@@ -6,85 +6,75 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:42:35 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/02 13:22:07 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:48:48 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+size_t	cnt_words(char const *str, char delimiter)
 {
-	char    *srccpy;
-    int x;
+	size_t	words;
+	char	is_delimiter;
 
-    x = 0;
-	srccpy = dest;
-	while (n > 0 && src[x] != '\0')
+	words = 0;
+	is_delimiter = 1;
+	while (*str)
 	{
-		dest[x] = src[x];
-        x++;
-        n--;
+		if (*str++ == delimiter)
+			is_delimiter = 1;
+		else
+		{
+			words += is_delimiter;
+			is_delimiter = 0;
+		}
 	}
-	while (n > 0 && *dest != '\0')
-	{
-		dest[x] = '\0';
-		x++;
-        n--;
-	}
-	return (srccpy);
+	if (!words && is_delimiter)
+		return (0);
+	if (!words)
+		return (1);
+	return (words);
 }
 
-char    *ft_strnew(size_t size)
+char	**save_words( \
+			char **save_place, char const *str, size_t words, char delimiter)
 {
-	char	*s;
+	size_t	aux_words;
+	size_t	str_len;
+	size_t	count;
 
-	if (!(s = (char *)malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	ft_bzero(s, size + 1);
-	return (s);
+	aux_words = 0;
+	str_len = 0;
+	count = 0;
+	while (aux_words < words)
+	{
+		if (str[count] == delimiter || count >= ft_strlen(str))
+		{
+			if (str_len != 0)
+				save_place[aux_words++] = \
+					ft_substr(str, count - str_len, str_len);
+			str_len = 0;
+		}
+		else
+			str_len++;
+		count++;
+	}
+	return (save_place);
 }
 
-char    **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char	**tab;
-	int		x;
-	size_t	lenstr;
-    
-    x = 0;
+	char	**output;
+	size_t	words;
+
 	if (!s)
 		return (NULL);
-	while (*s == c)
-		++s;
-    if (!(tab = (char**)malloc((ft_strlen(s) + ft_strlen(&c)) * sizeof(char*))))
-		return (NULL);
-	while (*s != '\0')
+	words = cnt_words(s, c);
+	output = (char **)malloc((words + 1) * sizeof(char *));
+	if (output)
 	{
-		lenstr = 0;
-		while (*s != c && *s != '\0' && ++s)
-			++lenstr;
-		if (!(tab[x] = (char *)malloc(sizeof(char) * (lenstr + 1))))
-			return (NULL);
-		ft_strncpy(tab[x++], s - lenstr, lenstr);
-		while (*s == c)
-			++s;
+		save_words(output, s, words, c);
+		output[words] = NULL;
 	}
-	tab[x] = 0;
-	return (tab);
+	return (output);
 }
-/* #include <stdio.h>
-int main()
-{
-    char str[] = "Esta, cadena, esta formada, por varias, palabras";
-    char **stnew;
-    int x;
-
-    x = 0;
-    stnew = ft_split(str, ',');
-    while (stnew[x])
-    {
-        printf("%s\n",stnew[x]);
-        x++;
-    }
-    free(stnew);
-    return 0;
-} */

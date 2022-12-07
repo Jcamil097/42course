@@ -6,37 +6,31 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:19:11 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/11/30 12:58:24 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:55:18 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	x;
-	size_t	y;
 
-	x = 0;
-	if (!haystack || !needle)
-		return (NULL);
-	if (!needle || !needle[0])
+	if (!*needle)
 		return ((char *)haystack);
-	while (!haystack[x] && x < len)
+	while (*haystack && len--)
 	{
-		y = 0;
-		while (haystack[x + y] && needle[y]
-			&& x + y < len && haystack[x + y] == needle[y])
+		x = 0;
+		while (haystack[x] == needle[x])
 		{
-			y++;
+			if (!needle[++x])
+				return ((char *)haystack);
+			if (x > len)
+				return (0);
 		}
-		if (!needle[y])
-		{
-			return ((char *)(haystack + x));
-		}
-		x++;
+		haystack++;
 	}
-	return (NULL);
+	return (0);
 }
 /* #include <stdio.h>
 

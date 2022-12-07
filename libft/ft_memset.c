@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:38:11 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/02 16:15:46 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:45:02 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memset(void *str, int c, size_t n)
 {
-	size_t		x;
 	char	*st;
+	size_t	x;
 
 	x = 0;
 	st = str;
@@ -24,7 +24,7 @@ void	*ft_memset(void *str, int c, size_t n)
 		st[x] = c;
 		x++;
 	}
-   return(st);
+	return (st);
 }
 /* #include <stdio.h>
 

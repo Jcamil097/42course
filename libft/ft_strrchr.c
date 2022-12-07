@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 19:00:09 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/11/30 12:29:40 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:50:57 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	int	x;
+	unsigned int	x;
 
-	x = 0;
-	while (str[x])
-		x++;
-	while (x >= 0)
+	x = ft_strlen(str) + 1;
+	while (x--)
 	{
-		if (str[x] == c)
+		if (str[x] == (char)c)
 			return ((char *)(str + x));
-		x--;
 	}
 	return (NULL);
 }

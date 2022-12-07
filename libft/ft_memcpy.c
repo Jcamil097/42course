@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:32:58 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/02 16:01:47 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:40:10 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	x;
-	char *dt;
-	const char *sr;
+	const char	*sr;
+	char		*dt;
+	size_t		x;
 
 	dt = dst;
 	sr = src;
 	x = 0;
+	if (!dst && !src)
+		return (NULL);
 	while (x < n)
 	{
 		dt[x] = sr[x];
@@ -28,7 +30,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
- /* #include <stdio.h>
+/* #include <stdio.h>
 #include <string.h>
 int main () {
   const char src[50] = "http://www.tutorialspoint.com";

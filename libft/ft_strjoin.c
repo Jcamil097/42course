@@ -6,24 +6,24 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 19:49:30 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/03 12:39:13 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:54:57 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strjoin(const char* s1, const char* s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-    char	*str;
+	char	*str;
 	size_t	i;
-    
+
 	i = 0;
 	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
-		return (NULL);		
+		return (NULL);
 	while (*s1)
 	{
-		str[i] = *s1++;	
+		str[i] = *s1++;
 		i++;
 	}
 	while (*s2)

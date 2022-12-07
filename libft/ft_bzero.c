@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:05:31 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/01 16:30:24 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:08:10 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	x;
-	char *st;
+	char	*st;
 
 	st = s;
-	if (!s)
-		return ;
 	x = 0;
 	while (x < n)
 	{

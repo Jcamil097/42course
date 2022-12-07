@@ -6,43 +6,69 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:57:20 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/02 12:12:56 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:33:41 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+unsigned int	numlen(long num)
+{
+	unsigned int	len;
+
+	len = 0;
+	if (num == 0)
+		return (1);
+	if (num < 0)
+	{
+		num *= -1;
+		len++;
+	}
+	while (num >= 1)
+	{
+		num /= 10;
+		len++;
+	}
+	return (len);
+}
+
+char	*new_str(char *str, long nb, unsigned int len)
+{	
+	if (nb == 0)
+	{
+		str[0] = '0';
+		return (str);
+	}
+	if (nb < 0)
+		nb *= -1;
+	while (len--)
+	{
+		str[len] = (nb % 10) + '0';
+		nb /= 10;
+	}
+	if (str[0] == '0')
+		str[0] = '-';
+	return (str);
+}
+
 char	*ft_itoa(int n)
 {
-	char	*result;
-	int		i;
-	int		sign;
-	int		tenp;
+	unsigned int	len;
+	char			*str;
 
-	i = 1;
-	tenp = 1;
-    sign = 1;
-    if (n < 0)
-        sign = 2;
-	while ((n / tenp / 10) != 0 && ++i)
-		tenp *= 10;
-	if (!(result = malloc((unsigned int)(i + sign) * sizeof(char))))
-		return (NULL);
-	i = 0;
-	if (sign == 2 && (sign = -1))
-		result[i++] = '-';
-	while (tenp != 0)
-	{
-		result[i++] = (char)((int)n / tenp * sign + 48);
-		n %= tenp;
-		tenp /= 10;
-	}
-	result[i++] = '\0';
-	return (result);
+	len = numlen(n);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (str)
+		str = new_str(str, n, len);
+	return (str);
 }
 /* #include <stdio.h>
 int main()
 {
-    printf("%s",ft_itoa(2147483647));
-    return 0;
+	char *str;
+
+	str = ft_itoa(-2147483648LL);
+	printf("%s", str);
+	free(str);
+	return 0;
 } */

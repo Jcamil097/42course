@@ -6,22 +6,21 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:20:39 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/02 16:59:59 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:56:26 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-size_t ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	size_t cont;
-	unsigned int x;
-	
+	size_t			cont;
+	unsigned int	x;
+
 	x = 0;
 	cont = ft_strlen(src);
 	if (!size)
-		return(cont);
+		return (cont);
 	while (src[x] != '\0' && x < size - 1)
 	{
 		dest[x] = src[x];

@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:45:01 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/03 10:19:12 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:37:56 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	x;
-	const char *src1;
-	const char *src2;
+	size_t				x;
+	unsigned const char	*src1;
+	unsigned const char	*src2;
 
 	x = 0;
 	src1 = s1;
@@ -24,7 +24,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (x < n)
 	{
 		if (src1[x] != src2[x])
-			return ((unsigned const char)src1[x] - (unsigned const char)src2[x]);
+			return (src1[x] - src2[x]);
 		x++;
 	}
 	return (0);

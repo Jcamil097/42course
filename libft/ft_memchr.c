@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 19:21:16 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/11/30 12:49:36 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:32:14 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t			x;
-	const char	*str;
+	const char		*str;
 
 	x = 0;
 	str = s;
