@@ -5,12 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/02 10:03:47 by jumoncad          #+#    #+#              #
-#    Updated: 2022/12/17 12:01:26 by jumoncad         ###   ########.fr        #
+#    Created: 2022/12/19 11:29:59 by jumoncad          #+#    #+#              #
+#    Updated: 2022/12/19 17:47:54 by jumoncad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			=	ft_printf.c ft_printhexa.c ft_putnbr_u.c ft_print_p.c
+
+SRCS			=	ft_printf.c ft_print_p.c ft_print_u.c ft_print_x.c \
+					ft_utils.c
 					
 OBJS			= $(SRCS:.c=.o)
 				

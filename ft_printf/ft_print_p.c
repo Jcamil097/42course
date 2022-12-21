@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 11:47:58 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/17 12:23:47 by jumoncad         ###   ########.fr       */
+/*   Created: 2022/12/19 14:23:55 by jumoncad          #+#    #+#             */
+/*   Updated: 2022/12/20 11:37:10 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_ptr_len(unsigned long int num)
 {
@@ -25,7 +25,7 @@ int	ft_ptr_len(unsigned long int num)
 	return (len);
 }
 
-void	ft_putnbr_ptr(uintptr_t num)
+void	ft_putnbr_ptr(size_t num)
 {
 	if (num >= 16)
 	{
@@ -35,9 +35,9 @@ void	ft_putnbr_ptr(uintptr_t num)
 	else
 	{
 		if (num <= 9)
-			ft_putchar_fd((num + '0'), 1);
+			ft_putchar((num + '0'));
 		else
-			ft_putchar_fd((num - 10 + 'a'), 1);
+			ft_putchar((num - 10 + 'a'));
 	}
 }
 

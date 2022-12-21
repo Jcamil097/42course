@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_print_x.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 16:29:35 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/17 10:29:40 by jumoncad         ###   ########.fr       */
+/*   Created: 2022/12/19 14:12:11 by jumoncad          #+#    #+#             */
+/*   Updated: 2022/12/20 10:05:40 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_printhexa(unsigned int x, const char *str)
 {
-	if (n == -2147483648)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putchar_fd('2', fd);
-		ft_putnbr_fd(147483648, fd);
-	}
-	else if (n >= 0 && n < 10)
-	{
-		ft_putchar_fd(n + '0', fd);
-	}
-	else if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(n * (-1), fd);
-	}
+	char	*hexa;
+	int		res[100];
+	int		i;
+	int		cont;
+
+	cont = 1;
+	if (*str == 'x')
+		hexa = "0123456789abcdef";
 	else
+		hexa = "0123456789ABCDEF";
+	i = 0;
+	while (x >= 16)
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
+		res[i] = hexa[x % 16];
+		x = x / 16;
+		i++;
 	}
+	cont += i;
+	res[i] = hexa[x];
+	while (i >= 0)
+	{
+		ft_putchar(res[i]);
+		i--;
+	}
+	return (cont);
 }
