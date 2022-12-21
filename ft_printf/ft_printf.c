@@ -6,12 +6,11 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:28:51 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/21 10:48:04 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/21 10:50:56 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_search_type(va_list arg, const char *str)
 {
