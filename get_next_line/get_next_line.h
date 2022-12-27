@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:34:08 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/26 20:28:24 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:33:47 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 
-/*
- * inicializar el BUFFER_SIZE por si alguna vez se olivida de hacer 
- * en tiempo de compilacion el BUFFER se establece automaticamente en 5
- */
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif
-
 typedef struct	s_list
 {
 	char			*content;
@@ -33,5 +25,14 @@ typedef struct	s_list
 }				t_list;
 
 char	*get_next_line(int fd);
+void 	read_fd(int fd, t_list **list);
+int		find_newline(t_list *list);
+void	extract_line(t_list *list, char **line);
+void	generate_line(char **line, t_list *list);
+void	free_stash(t_list *list);
+t_list	*ft_lstlast(t_list *list);
+void 	add_to_list(t_list **list, char *buf, int readed);
+int		ft_strlen(const char *str);
+void	clean_stash(t_list **list);
 
 #endif
