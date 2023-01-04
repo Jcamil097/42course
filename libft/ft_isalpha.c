@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 12:05:12 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/03 11:29:45 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:49:44 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,3 @@ int	ft_isalpha(int c)
 	}
 	return (0);
 }
-/* #include <stdio.h>
-int main()
-{
-	printf("%d",ft_isalpha('w'));
-	return 0;
-} */

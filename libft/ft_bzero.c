@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:05:31 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/06 11:08:10 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:49:12 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,3 @@ void	ft_bzero(void *s, size_t n)
 		x++;
 	}
 }
-/* #include <string.h>
-int main()
-{
-	//probar con debug
-	char buffer[80];
-
-	buffer[1] = 's';
-    bzero( buffer, 80);
-
-	char buffer2[80];
-
-	buffer2[1] = 's';
-    ft_bzero( buffer2, 80);
-	return 0;
-} */

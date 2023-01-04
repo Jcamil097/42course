@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:25:36 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/06 12:52:09 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:43:31 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,3 @@ char	*ft_strdup(const char *s1)
 		ft_memcpy(str, s1, x + 1);
 	return (str);
 }
-/* #include <stdio.h>
-#include <stdlib.h>
-int main() {
-   char *str = "Helloworld";
-   char *result;
-   result = strdup(str);
-   printf("The string : %s", result);
-
-   printf("%s","\n");
-   char *str2 = "Helloworld";
-   char *result2;
-   result2 = strdup(str2);
-   printf("The string : %s", result2);
-   return 0;
-} */

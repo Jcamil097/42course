@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 19:49:30 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/06 12:54:57 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:43:42 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,3 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	str[i] = '\0';
 	return (str);
 }
-/* #include <stdio.h>
-int main()
-{
-    printf("%s",ft_strjoin("lorem ipsum","dolor sit amet"));
-    return (0);
-} */

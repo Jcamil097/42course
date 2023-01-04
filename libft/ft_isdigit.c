@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 18:07:03 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/11/29 18:41:01 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:50:07 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,3 @@ int	ft_isdigit(int c)
 	}
 	return (0);
 }
-/* 
-#include <stdio.h>
-int main()
-{
-	printf("%d",ft_isdigit('5'));
-	return 0;
-} */

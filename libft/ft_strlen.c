@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:48:28 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/02 15:19:02 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:50:53 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,3 @@ size_t	ft_strlen(const char *s)
 		cont++;
 	return (cont);
 }
-/* #include <stdio.h>
-#include <string.h>
-int main()
-{
-	printf("%zu",ft_strlen("holasss"));
-	printf("%s","\n");
-	printf("%zu",strlen("holasss"));
-	return 0;
-} */

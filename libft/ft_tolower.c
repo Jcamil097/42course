@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:30:09 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/11/30 12:10:32 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:51:54 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,3 @@ int	ft_tolower(int c)
 	}
 	return (c);
 }
-/* #include <stdio.h>
-int main()
-{
-	printf("%c",ft_tolower('A'));
-	return 0;
-} */

@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:33:30 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/11/29 18:50:22 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:50:27 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,3 @@ int	ft_isprint(int c)
 	}
 	return (0);
 }
-/* #include <stdio.h>
-int main()
-{
-	printf("%d", ft_isprint('\n'));
-	return 0;
-} */

@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:57:20 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/06 15:33:41 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:40:52 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,3 @@ char	*ft_itoa(int n)
 		str = new_str(str, n, len);
 	return (str);
 }
-/* #include <stdio.h>
-int main()
-{
-	char *str;
-
-	str = ft_itoa(-2147483648LL);
-	printf("%s", str);
-	free(str);
-	return 0;
-} */

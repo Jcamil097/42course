@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:25:41 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/11/30 12:09:37 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:52:03 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,3 @@ int	ft_toupper(int c)
 	}
 	return (c);
 }
-/* #include <stdio.h>
-int main()
-{
-	printf("%c",ft_toupper('s'));
-	return 0;
-} */

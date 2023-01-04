@@ -6,75 +6,69 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:42:35 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/06 12:48:48 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:02:54 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	cnt_words(char const *str, char delimiter)
+int	cont_words(char const *s, char c)
 {
-	size_t	words;
-	char	is_delimiter;
+	int	pos;
+	int	cont;
 
-	words = 0;
-	is_delimiter = 1;
-	while (*str)
+	pos = 0;
+	cont = 0;
+	while (s[pos])
 	{
-		if (*str++ == delimiter)
-			is_delimiter = 1;
-		else
+		if (s[pos] != c)
 		{
-			words += is_delimiter;
-			is_delimiter = 0;
+			cont++;
+			while (s[pos] != c && s[pos])
+				pos++;
 		}
+		else
+			pos++;
 	}
-	if (!words && is_delimiter)
-		return (0);
-	if (!words)
-		return (1);
-	return (words);
+	return (cont);
 }
 
-char	**save_words( \
-			char **save_place, char const *str, size_t words, char delimiter)
+int	len_word(char const *s, char c, int pos)
 {
-	size_t	aux_words;
-	size_t	str_len;
-	size_t	count;
+	int	len;
 
-	aux_words = 0;
-	str_len = 0;
-	count = 0;
-	while (aux_words < words)
+	len = 0;
+	while (s[pos] != c && s[pos] != '\0')
 	{
-		if (str[count] == delimiter || count >= ft_strlen(str))
-		{
-			if (str_len != 0)
-				save_place[aux_words++] = \
-					ft_substr(str, count - str_len, str_len);
-			str_len = 0;
-		}
-		else
-			str_len++;
-		count++;
+		len++;
+		pos++;
 	}
-	return (save_place);
+	return (len);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**output;
-	size_t	words;
+	int		cont;
+	int		word;
+	int		len;
+	int		pos;
+	char	**str;
 
-	if (!s)
+	cont = 0;
+	pos = 0;
+	word = cont_words(s, c);
+	str = (char **)malloc(sizeof(char *) * (word + 1));
+	if (!str)
 		return (NULL);
-	words = cnt_words(s, c);
-	output = (char **)malloc((words + 1) * sizeof(char *));
-	if (output)
+	while (pos < word)
 	{
-		save_words(output, s, words, c);
-		output[words] = NULL;
+		while (s[cont] == c)
+			cont++;
+		len = len_word(s, c, cont);
+		str[pos] = ft_substr(s, cont, len);
+		cont = cont + len;
+		pos++;
 	}
-	return (output);
+	str[pos] = 0;
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:50:51 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/06 18:02:22 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:50:00 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (ft_strdup(s1));
 	i = init(s1, set);
 	e = end(s1, set);
-	if (i >= e)
-		return (ft_strdup(""));
 	return (ft_substr(s1, i, e - i + 1));
-}
-#include <stdio.h>
-int main()
-{
-    printf("%s",ft_strtrim("lorem ipsum dolor sit amet","te"));
-    printf("\n");
-    printf("%s",ft_strtrim("            "," "));
-    return 0;
 }

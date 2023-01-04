@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:34:10 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/03 12:00:40 by jumoncad         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:48:48 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,3 @@ int	ft_atoi(const char *str)
 	}
 	return (n * sig);
 }
-/* #include <stdio.h>
-#include <string.h>
-int main () {
-	
-   int val2;
-   char str2[20];
-   
-   strcpy(str2, "++47");
-   val2 = ft_atoi(str2);
-   printf("String value = %s, Int value = %d\n", str2, val2);
-
-   return(0);
-} */
