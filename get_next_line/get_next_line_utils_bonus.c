@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/21 11:33:43 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/01/04 14:28:16 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/01/04 11:00:43 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/01/04 11:37:20 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -50,7 +50,10 @@ void	ft_bzero(void *s, size_t n)
 	str = (char *)s;
 	i = 0;
 	while (i < n)
-		str[i++] = '\0';
+	{
+		str[i] = '\0';
+		i++;
+	}
 }
 
 void	*ft_calloc(size_t elementCount, size_t elementSize)

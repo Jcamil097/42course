@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 15:21:27 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/01/04 12:29:27 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/01/04 10:59:15 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/01/04 12:44:51 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
+
+char	*fr_free(char *buffer, char *buf)
+{
+	char	*temp;
+
+	temp = ft_strjoin(buffer, buf);
+	free(buffer);
+	return (temp);
+}
 
 char	*ft_next(char *buffer)
 {
@@ -35,16 +44,7 @@ char	*ft_next(char *buffer)
 	return (line);
 }
 
-char	*ft_free(char *buffer, char *buf)
-{
-	char	*temp;
-
-	temp = ft_strjoin(buffer, buf);
-	free(buffer);
-	return (temp);
-}
-
-char	*ft_set_line(char *buffer)
+char	*ft_line(char *buffer)
 {
 	char	*line;
 	int		i;
@@ -84,7 +84,7 @@ char	*read_file(int fd, char *res)
 			return (NULL);
 		}
 		buffer[byte_read] = 0;
-		res = ft_free(res, buffer);
+		res = fr_free(res, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
@@ -94,15 +94,15 @@ char	*read_file(int fd, char *res)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[4096];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buffer = read_file(fd, buffer);
-	if (!buffer)
+	buffer[fd] = read_file(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	line = ft_set_line(buffer);
-	buffer = ft_next(buffer);
+	line = ft_line(buffer[fd]);
+	buffer[fd] = ft_next(buffer[fd]);
 	return (line);
 }
