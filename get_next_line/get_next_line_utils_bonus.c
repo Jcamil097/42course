@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:00:43 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/01/04 11:37:20 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/01/05 11:18:15 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-char	*ft_strchr(const char *string, int searchedChar )
+char	*ft_strchr(const char *str, int c )
 {
-	char	*str;
-
-	str = (char *)string;
-	while (*str != searchedChar && *str != 0)
+	while (*str != c && *str != 0)
 		str++;
-	if (*str == searchedChar)
-		return (str);
+	if (*str == c)
+		return ((char *)str);
 	else
 		return (NULL);
 }
@@ -56,23 +53,23 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+void	*ft_calloc(size_t count, size_t size)
 {
 	char	*res;
 
-	res = malloc(elementSize * elementCount);
+	res = malloc(size * count);
 	if (!res)
 		return (NULL);
-	ft_bzero(res, elementSize * elementCount);
+	ft_bzero(res, size * count);
 	return (res);
 }
 
-size_t	ft_strlen(const char *theString)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
 	i = 0;
-	while (theString[i])
+	while (str[i])
 		i++;
 	return (i);
 }
