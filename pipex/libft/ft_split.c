@@ -3,72 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:42:35 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/12 11:02:54 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:29:13 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	cont_words(char const *s, char c)
+int len_word(char const *s, char c, int pos)
 {
-	int	pos;
-	int	cont;
-
-	pos = 0;
-	cont = 0;
-	while (s[pos])
-	{
-		if (s[pos] != c)
-		{
-			cont++;
-			while (s[pos] != c && s[pos])
-				pos++;
-		}
-		else
-			pos++;
-	}
-	return (cont);
+    int len;
+    len = 0;
+    while (s[pos] != c && s[pos] != '\0')
+    {
+        len++;
+        pos++;
+    }
+    return (len);
 }
-
-int	len_word(char const *s, char c, int pos)
+int cont_words(char const *s, char c)
 {
-	int	len;
-
-	len = 0;
-	while (s[pos] != c && s[pos] != '\0')
-	{
-		len++;
-		pos++;
-	}
-	return (len);
+    int i;
+    int count;
+    count = 0;
+    i = 0;
+    while (s[i])
+    {
+        if (s[i] != c && (i == 0 || s[i - 1] == c))
+            count++;
+        i++;
+    }
+    return (count);
 }
-
-char	**ft_split(char const *s, char c)
+static char **err_free(char const **list, int i)
 {
-	int		cont;
-	int		word;
-	int		len;
-	int		pos;
-	char	**str;
-
-	cont = 0;
-	pos = 0;
-	word = cont_words(s, c);
-	str = (char **)malloc(sizeof(char *) * (word + 1));
-	if (!str)
-		return (NULL);
-	while (pos < word)
-	{
-		while (s[cont] == c)
-			cont++;
-		len = len_word(s, c, cont);
-		str[pos] = ft_substr(s, cont, len);
-		cont = cont + len;
-		pos++;
-	}
-	str[pos] = 0;
-	return (str);
+    while (i > 0)
+    {
+        i--;
+        free((void *)list[i]);
+    }
+    free(list);
+    return (NULL);
+}
+char    **ft_split(char const *s, char c)
+{
+    int     i;
+    int     j;
+    int     k;
+    int     count;
+    char    **result;
+	
+    count = cont_words(s, c);
+    result = (char **)malloc(sizeof(char *) * (count + 1));
+    if (!result || !s)
+        return (NULL);
+    i = 0;
+    k = 0;
+    while (i < count)
+    {
+        while (s[k] == c)
+            k++;
+        j = len_word(s, c, k);
+        result[i] = ft_substr(s, k, j);
+        if (result[i] == NULL)
+            return (err_free((char const **)result, i));
+        k = k + j;
+        i++;
+    }
+    result[i] = 0;
+    return (result);
 }

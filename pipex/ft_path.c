@@ -5,54 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 11:42:28 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/01/17 12:25:15 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/01/25 11:35:31 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/02/07 12:04:43 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "ft_pipex.h"
 
-//comparar dos cadenas de caracteres hasta na
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+/*
+Esta función es una función en C que construye una 
+ruta de acceso a un archivo específico en el sistema de archivos. 
+Toma dos argumentos: una cadena str que representa una ruta de acceso 
+y una cadena filname que representa el nombre de archivo. 
+Concatena la ruta de acceso y el nombre de archivo para crear una ruta completa y, 
+a continuación, asigna este valor a un puntero de caracteres buf. 
+Finalmente, la función devuelve el puntero de caracteres buf que contiene 
+la ruta completa.
+*/
+void	*ft_count(char *str, char *filname)
 {
-	size_t	i;
+	char *buf;
 
-	i = 0;
-	if (s1 != NULL && s2 != NULL)
-	{
-		while (s1[i] != '\0' && --n)
-		{
-			if (ft_isalpha(s1[i]) && ft_isalpha(s2[i]))
-			{
-				if (ft_tolower(s1[i]) != ft_tolower(s2[i]))
-					return (0);
-			}
-			else if (s2[i] == '\0')
-				return (0);
-			++i;
-		}
-		if (s1[i] == s2[i])
-			return (1);
-	}
-	return (0);
+	buf = (char *)malloc(ft_strlen(str) + ft_strlen(filname) + 16);
+	ft_strcat(buf, str);
+	ft_strcat(buf, "/");
+	ft_strcat(buf, filname);
+	return (buf);
 }
+
+/*
+e utiliza para obtener la variable de entorno PATH en un sistema operativo. 
+Esta variable de entorno es una lista de directorios separados por ':' 
+en los que se buscan programas ejecutables.
+*/
 
 char **ft_get_path(void)
 {
-	int	i;
-	char *p;
-	char **str;
-	char	**env;
+	int		i;
+	char	*p;
+	char	**str;
+
 	i = 0;
 	str = NULL;
-	env = NULL;
-	printf("asfas");
-	while (env[i])
+	while (environ[i])
 	{
-		if ((ft_strnequ(env[i], "PATH", 4)) == 1)
+		if (ft_strnequ(environ[i], "PATH", 4) == 1)
 		{
 			//almacenar en p una copia del valor de PATH
-			p = env[i];
+			p = environ[i];
 			//desplazar el puntero 5 espacios para ignorar "PATH="
 			p += 5;
 			//dividir el valor de PATH
@@ -65,4 +65,31 @@ char **ft_get_path(void)
 			i++;
 	}
 	return (str);
+}
+
+/*
+busca el comando que se le pasa como argumento en el PATH del sistema 
+y lo ejecuta utilizando la función execve
+*/
+void	ft_exec(char **argv)
+{
+	char	**path;
+	char	*buf;
+	int		i;
+
+	i = 0;
+	path = ft_get_path();
+	while (path[i])
+	{
+		buf = ft_count(path[i], argv[0]);
+		if (execve(buf, argv, environ) != -1)
+		{
+			i = -34;
+			break ;
+		}
+		else
+			i++;
+	}
+	if (i >= 0)
+		ft_print_error("Could not find command\n");
 }

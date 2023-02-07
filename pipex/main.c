@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 18:25:41 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/08 10:52:03 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/01/25 10:27:27 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/01/25 12:22:04 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "ft_pipex.h"
+
+int main(int argc, char **argv)
 {
-	if (c >= 97 && c <= 122)
-	{
-		c -= 32;
-	}
-	return (c);
+	if (argc != 5)
+		ft_print_error("Usage: ./pipex file1 cmd1 cmd2 file2\n");
+	else
+		ft_pipex(argv[1],argv[2],argv[3],argv[4]);
+	return (0);
 }

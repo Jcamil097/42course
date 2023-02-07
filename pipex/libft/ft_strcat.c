@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kmesas <kmesas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 10:45:01 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/08 10:41:20 by jumoncad         ###   ########.fr       */
+/*   Created: 2013/11/20 11:53:43 by kmesas            #+#    #+#             */
+/*   Updated: 2013/11/25 14:29:52 by kmesas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	size_t				x;
-	unsigned const char	*src1;
-	unsigned const char	*src2;
+	int	i;
+	int	j;
 
-	x = 0;
-	src1 = s1;
-	src2 = s2;
-	while (x < n)
+	i = 0;
+	j = 0;
+	while (s1[i] != '\0')
+		i++;
+	while (s2[j] != '\0')
 	{
-		if (src1[x] != src2[x])
-			return (src1[x] - src2[x]);
-		x++;
+		s1[i] = s2[j];
+		i++;
+		j++;
 	}
-	return (0);
+	s1[i] = '\0';
+	return (s1);
 }
