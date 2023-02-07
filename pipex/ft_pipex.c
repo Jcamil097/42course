@@ -6,12 +6,15 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:18:35 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/01/17 12:30:05 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:06:27 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/*
+prueba
+*/
 void ft_pid1(int fd1, int *piped, char *cmd1)
 {
 	char **comand1;
