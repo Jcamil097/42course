@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:21:27 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/01/05 11:25:55 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/01/04 12:29:27 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,21 +105,4 @@ char	*get_next_line(int fd)
 	line = ft_set_line(buffer);
 	buffer = ft_next(buffer);
 	return (line);
-}
-
-int	main(void)
-{
-	int		fd;
-	char	*line;
-
-	fd = open("file1", O_RDONLY);
-	while (1)
-	{
-		line = get_next_line(fd);
-		printf("%s", line);
-		if (line == NULL)
-			break ;
-		free(line);
-	}
-	return (0);
 }

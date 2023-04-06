@@ -5,18 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 10:27:27 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/01/25 12:22:04 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/04/05 17:09:50 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/04/05 17:16:13 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_pipex.h"
+#include "../inc/pipex.h"
 
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **envp)
 {
-	if (argc != 5)
-		ft_print_error("Usage: ./pipex file1 cmd1 cmd2 file2\n");
-	else
-		ft_pipex(argv[1],argv[2],argv[3],argv[4]);
+	int f1;
+	int f2;
+	
+	if(argc != 5)
+		return (ft_putstr("numero de argumentos invalidos",0));
+	if(check_empty(argv[2]) || check_empty(argv[3]))
+		return (1);
+	f1 = open(argv[1], O_RDONLY);
+	f2 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (f1 < 0)
+		return (ft_putstr(strerror(errno), argv[1]));
+	if (f2 < 0)
+		return (ft_putstr(strerror(errno), argv[4]));
+	pipex(f1, f2, argv, envp);
+	if(close(f1) < 0 || close(f2) < 0)
+		return (ft_putstr(strerror(errno), 0));
 	return (0);
 }
