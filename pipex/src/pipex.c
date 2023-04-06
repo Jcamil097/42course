@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:16:45 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/04/06 17:44:44 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:41:41 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ static void init_cmd(t_cmd *c, int f)
 	c->args[0] = 0;
 }
 
+static void free_all(t_cmd *c, t_cmd *d)
+{
+	free_struct(c);
+	free_struct(d);
+}
+
 static char **get_path(char **ep)
 {
 	char **ret;
@@ -29,7 +35,7 @@ static char **get_path(char **ep)
 	i = -1;
 	while (ep[++i])
 	{
-		if (ft_substr(ep[i], "PATH=", PATH))
+		if (ft_strncmp(ep[i], "PATH=", PATH))
 		{
 			env = ft_substr(ep[i], START, ft_strlen(ep[i]));
 			if (!env)
@@ -54,10 +60,26 @@ static int get_cmd(char **enp, t_cmd *c, char *cmd)
 
 	i = -1;
 	c->path = get_path(enp);
-	if(!tmp)
+	if (!c->path)
 		return (0);
-	c->cmd = ft_substr(tmp[i + 1], 0, ft_strlen(cmd));
-	
+	tmp = ft_splitpath(cmd, ' ');
+	if (!tmp)
+		return (0);
+	c->cmd = ft_substr(tmp[i + 1], 0, ft_strlen(tmp[i + 1] - 1));
+	if (!c->cmd)
+		return (free_arr(tmp));
+	while (tmp[++i])
+	{
+		c->args[i] = ft_substr(tmp[i], 0, ft_strlen(tmp[i + 1] - 1));
+		if (!c->args[i])
+		{
+			free_arr(c->args);
+			return(free_arr(tmp));
+		}
+	}
+	c->args[i] = 0;
+	free_arr(tmp);
+	return(1);
 }
 
 void pipex(int f1, int f2, char **ag, char **envp)
