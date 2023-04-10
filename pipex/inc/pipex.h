@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:09:01 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/04/05 17:09:40 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/04/10 13:56:39 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,12 @@ void	exec_cmd(t_cmd *cmd1, t_cmd *cmd2, char **envp);
 void	error_msg(char *c);
 int		check_cmd(t_cmd *c);
 int		check_empty(char *s);
-
-/** STRING UTILS */
-
 char	**ft_splitpath(char *s, char c);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *src);
 int		ft_putstr(char *s, char *t);
-
-/** FREE */
-
 int		free_arr(char **path);
 void	free_struct(t_cmd *c);
 
