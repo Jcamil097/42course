@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/jumoncad/Desktop/42course/ft_printf",
-      "program": "/Users/jumoncad/Desktop/42course/ft_printf/build/Debug/outDebug"
+      "cwd": "/Users/jumoncad/Desktop/soLong",
+      "program": "/Users/jumoncad/Desktop/soLong/build/Debug/outDebug"
     }
   ]
 }

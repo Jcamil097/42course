@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:28:51 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/02/19 12:27:38 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:29:35 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,4 @@ int	ft_printf(char const *str, ...)
 	}
 	va_end(arg);
 	return (cont);
-}
-
-#include <stdio.h>
-
-int main(void)
-{
-	//ft_printf("%f", 21.3);
-	//printf("%d", 21.3);
-	return 0;
 }

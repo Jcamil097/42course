@@ -13,7 +13,8 @@
     "-Wshadow",
     "-Wformat=2",
     "-Wconversion",
-    "-Wnull-dereference"
+    "-Wnull-dereference",
+    "-Wsign-conversion"
   ],
   "C_Cpp_Runner.enableWarnings": true,
   "C_Cpp_Runner.warningsAsError": false,
@@ -32,10 +33,6 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "files.associations": {
-    "ft_printf.h": "c",
-    "printf.h": "c"
-  },
   "C_Cpp_Runner.useAddressSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false
 }
