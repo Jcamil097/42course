@@ -6,11 +6,11 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:26:24 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/04/24 12:45:42 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:13:13 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 t_img	save_img(t_data data)
 {
@@ -25,12 +25,13 @@ t_img	save_img(t_data data)
 	img.slime[0] = mlx_xpm_file_to_image(data.mlx, "image/slime1.xpm", &width, &height);
 	img.slime[1] = mlx_xpm_file_to_image(data.mlx, "image/slime2.xpm", &width, &height);
 	img.salida[0] = mlx_xpm_file_to_image(data.mlx, "image/salida.xpm", &width, &height);
-	img.salida[1] = mlx_xpm_file_to_image(data.mlx, "image/salida2.xpm", &width, &height);
+	img.salida[1] = mlx_xpm_file_to_image(data.mlx, "image/final2.xpm", &width, &height);
 	img.enemigo[0] = mlx_xpm_file_to_image(data.mlx, "image/enemigo.xpm", &width, &height);
 	img.enemigo[1] = mlx_xpm_file_to_image(data.mlx, "image/enemigo2.xpm", &width, &height);
+	img.victoria = mlx_xpm_file_to_image(data.mlx, "image/win2.xpm", &width, &height);
 	
 	if (!img.cesped || !img.moneda || !img.muro || !img.objeto || !img.slime[0] || !img.slime[1]
-		|| !img.salida[0] || !img.salida[1] || !img.enemigo[0] || !img.enemigo[1])
+		|| !img.salida[0] || !img.salida[1] || !img.enemigo[0] || !img.enemigo[1] || !img.victoria)
 	{
 		ft_putstr_fd("Error sprites corruptos save_img \n", 0);
 		exit(0);

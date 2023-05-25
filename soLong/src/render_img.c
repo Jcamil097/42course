@@ -6,11 +6,11 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:52:12 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/04/25 12:49:27 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:13:10 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 void	make_ground(t_data data, t_img img)
 {
@@ -66,7 +66,7 @@ void	make_obj(t_data data, t_img img)
 			mlx_put_image_to_window(data.mlx, data.win, img.slime[0],
 				(i % (data.height + 64)), (i / (data.height + 64) * 64));
 		if (data.map[i / 64] == 'A')
-			mlx_put_image_to_window(data.mlx, data.win, img.slime[0],
+			mlx_put_image_to_window(data.mlx, data.win, img.slime[1],
 				(i % (data.height + 64)), (i / (data.height + 64) * 64));
 		if (data.map[i / 64] == 'C')
 			mlx_put_image_to_window(data.mlx, data.win, img.moneda,

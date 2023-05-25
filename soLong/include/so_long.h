@@ -6,18 +6,25 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:19:42 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/04/25 15:26:26 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:55:28 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "unistd.h"
-# include "fcntl.h"
-# include "stdlib.h"
-# include "stdio.h"
-# include "mlx.h"
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include "../mlx/mlx.h"
+
+# define W  13
+# define A 	0
+# define S  1
+# define D  2
+# define Q  12
+# define ESC 53
 
 typedef struct s_img
 {
@@ -25,9 +32,11 @@ typedef struct s_img
 	void	*moneda;
 	void	*muro;
 	void	*objeto;
+	void 	*victoria;
 	void	*slime[2];
 	void	*enemigo[2];
 	void	*salida[2];
+
 }				t_img;
 
 typedef struct s_data
@@ -42,18 +51,13 @@ typedef struct s_data
 	t_img	img;
 }				t_data;
 
-typedef struct s_key
-{
-	int	code;
-	char letter;	
-} 				t_key;
-
 /* * check map* */
 char	*next_step(char *test_map, int pos, int lar);
 void	find_exit(t_data data);
 void	is_rectangle(t_data data);
 void	error_mapa_char(t_data data, int countp, int counte);
 void	is_map_close(t_data data);
+
 /* *ft_itoa* */
 char	*ft_itoa(int n);
 

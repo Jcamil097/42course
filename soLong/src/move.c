@@ -6,25 +6,29 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:28:03 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/04/25 15:19:32 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:13:07 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
-int collition(t_data *data, t_img *img, int next, int c)
+int	collition(t_data *data, t_img *img, int next, int c)
 {
-	int width;
-	int height;
+	int	width;
+	int	height;
 
+	if (are_there_door(*data, img))
+		return (0);
+	if (fail(*data, img, next))
+		return (0);
 	if (data->map[next] == '1')
 		return (0);
-	if (data->map[next] == 'E')
+	if (data->map[next] == 'E' && !are_there_coins(data, img))
 	{
 		img->slime[0] = mlx_xpm_file_to_image(data->mlx,
-											  "image/slime1.xpm", &width, &height);
+				"image/slime1.xpm", &width, &height);
 		img->slime[1] = mlx_xpm_file_to_image(data->mlx,
-											  "image/slime2.xpm", &width, &height);
+				"image/slime2.xpm", &width, &height);
 		return (0);
 	}
 	data->map[next] = c;
@@ -33,49 +37,22 @@ int collition(t_data *data, t_img *img, int next, int c)
 	return (1);
 }
 
-char letter_press(int keycode)
+int	moves(int keycode, t_data *data)
 {
-	char letter;
-	int i;
-	
-	t_key g_key[] = {
-		{0, 'a'},
-		{13, 'w'},
-		{1, 's'},
-		{2, 'd'},
-		{0, 0}};
-	i = 0;
-	letter = 0;
-	while (g_key[i].letter != 0)
-	{
-		if (keycode == g_key[i].code)
-		{
-			letter = g_key[i].letter;
-			break;
-		}
-		i++;
-	}
-	return (letter);
-}
+	int		pos;
 
-int moves(int keycode, t_data *data)
-{
-	int pos;
-	char letter;
-	
 	pos = 0;
 	while (data->map[pos] != 'P' && data->map[pos] != 'A')
 		pos++;
-	letter = letter_press(keycode);
-	if (letter == 'd' && collition(data, &data->img, pos + 1, 'P'))
+	if (keycode == D && collition(data, &data->img, pos + 1, 'P'))
 		data->map[pos] = '0';
-	if (letter == 'a' && collition(data, &data->img, pos - 1, 'A'))
+	if (keycode == A && collition(data, &data->img, pos - 1, 'A'))
 		data->map[pos] = '0';
-	if (letter == 's' && collition(data, &data->img, pos + data->line, 'P'))
+	if (keycode == S && collition(data, &data->img, pos + data->line, 'P'))
 		data->map[pos] = '0';
-	if (letter == 'w' && collition(data, &data->img, pos - data->line, 'A'))
+	if (keycode == W && collition(data, &data->img, pos - data->line, 'A'))
 		data->map[pos] = '0';
-	if (letter == 'd' || letter == 'a' || letter == 's' || letter == 'w')
+	if (keycode == D || keycode == A || keycode == S || keycode == W)
 		enemy_move(data, 0, 0);
 	are_there_coins(data, &data->img);
 	if (are_there_door(*data, &data->img))
@@ -89,7 +66,7 @@ int moves(int keycode, t_data *data)
 	return (0);
 }
 
-void enemy_move(t_data *data, int pos, int enemies)
+void	enemy_move(t_data *data, int pos, int enemies)
 {
 	while (data->map[pos++])
 	{
@@ -114,9 +91,9 @@ void enemy_move(t_data *data, int pos, int enemies)
 	strchng(data->map, 'V', 'W');
 }
 
-void strchng(char *str, int a, int b)
+void	strchng(char *str, int a, int b)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

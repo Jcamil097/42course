@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:21:27 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/05/25 12:22:41 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:24:33 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	char	*line;
 	int		i;
@@ -135,4 +135,4 @@ char	*get_next_line(int fd)
 	close(fd2);
 	close(fd3);
 	return (0);
-}*/
+}

@@ -6,11 +6,11 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:18:57 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/04/25 15:28:36 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:13:15 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int make_img(t_data *data)
 {
@@ -19,7 +19,8 @@ int make_img(t_data *data)
 
 	count++;
 	img = data->img;
-	if (count == 1000 )
+	if (count == 1000 && !are_there_door(*data, &data->img)
+		&& !fail(*data, &data->img, 0))
 	{
 		count = 0;
 		make_ground(*data, img);
@@ -32,7 +33,7 @@ int make_img(t_data *data)
 
 int	key_destroy(int keycode, t_data *data)
 {
-	if (keycode == 53)
+	if (keycode == ESC || keycode == Q)
 	{
 		mlx_destroy_window(data->mlx, data->win);
 		exit (0);
@@ -64,5 +65,4 @@ int main(int argc, char *argv[])
 	mlx_hook(data.win, 17, 0, destroy, &data);
 	mlx_loop(data.mlx);
 	free(data.mlx);
-	return (0);
 }

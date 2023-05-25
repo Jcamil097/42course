@@ -3,69 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:16:29 by ubegona           #+#    #+#             */
-/*   Updated: 2022/12/20 09:13:39 by ubegona          ###   ########.fr       */
+/*   Updated: 2023/05/25 13:12:59 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
-int	count(int z)
+int	numlen(int num)
 {
-	int	i;
+	int	x;
 
-	i = 0;
-	if (z <= 0)
-		i++;
-	while (z != 0)
+	x = 0;
+	if (num <= 0)
+		x++;
+	while (num != 0)
 	{
-		z = z / 10;
-		i++;
+		num = num / 10;
+		x++;
 	}
-	return (i);
+	return (x);
 }
 
-int	calcz(int z, char *p)
+int	cal_sign(int x, char *str)
 {
-	if (z == -2147483648)
-		z++;
-	if (z < 0)
+	if (x == -2147483648)
+		x++;
+	if (x < 0)
 	{
-		p[0] = '-';
-		z = z * -1;
+		str[0] = '-';
+		x = x * -1;
 	}
-	return (z);
+	return (x);
 }
 
 char	*ft_itoa(int n)
 {
-	int		z;
-	int		i;
-	char	*p;
+	int		x;
+	int		len;
+	char	*str;
 
-	z = n;
-	i = count(z);
-	p = malloc(sizeof(char) *(i + 1));
-	if (p == 0)
+	x = n;
+	len = numlen(x);
+	str = malloc(sizeof(char) *(len + 1));
+	if (str == 0)
 		return (NULL);
-	z = calcz(n, p);
+	x = cal_sign(n, str);
 	if (n == 0)
-		p[0] = '0';
-	p[i] = '\0';
-	while (z != 0)
+		str[0] = '0';
+	str[len] = '\0';
+	while (x != 0)
 	{
-		p[i - 1] = z % 10 + 48;
-		z = z / 10;
-		i--;
+		str[len - 1] = x % 10 + 48;
+		x = x / 10;
+		len--;
 	}
 	if (n == -2147483648)
-		p[10] = '8';
-	return (p);
+		str[10] = '8';
+	return (str);
 }
-
-// int main()
-// {
-// 	printf("nire itoa %s\n", ft_itoa(-2147483648));
-// }

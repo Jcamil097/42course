@@ -6,27 +6,27 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:58:02 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/04/24 11:58:32 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:12:53 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
-char	*next_step(char *test_map, int pos, int lar)
+char	*next_step(char *test_map, int pos, int line)
 {
 	test_map[pos] = '1';
 	if (test_map[pos + 1] && test_map[pos + 1] != '1'
 		&& test_map[pos + 1] != '\n')
-		next_step(test_map, pos + 1, lar);
+		next_step(test_map, pos + 1, line);
 	if (test_map[pos - 1] && test_map[pos - 1] != '1'
 		&& test_map[pos - 1] != '\n')
-		next_step(test_map, pos - 1, lar);
-	if (test_map[pos + lar] && test_map[pos + lar] != '1'
-		&& test_map[pos + lar] != '\n')
-		next_step(test_map, pos + lar, lar);
-	if (test_map[pos - lar] && test_map[pos - lar] != '1'
-		&& test_map[pos - lar] != '\n' )
-		next_step(test_map, pos - lar, lar);
+		next_step(test_map, pos - 1, line);
+	if (test_map[pos + line] && test_map[pos + line] != '1'
+		&& test_map[pos + line] != '\n')
+		next_step(test_map, pos + line, line);
+	if (test_map[pos - line] && test_map[pos - line] != '1'
+		&& test_map[pos - line] != '\n' )
+		next_step(test_map, pos - line, line);
 	return (test_map);
 }
 

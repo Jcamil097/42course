@@ -6,11 +6,11 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:24:31 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/04/25 11:47:54 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:13:03 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -78,7 +78,7 @@ void	ft_putstr_fd(char *s, int fd)
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
