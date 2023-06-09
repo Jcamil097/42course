@@ -5,62 +5,58 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 09:16:29 by ubegona           #+#    #+#             */
-/*   Updated: 2023/05/25 13:12:59 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/06/09 13:12:39 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/06/09 13:12:52 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	numlen(int num)
+static int	nb_len(long int n)
 {
-	int	x;
+	int	len;
 
-	x = 0;
-	if (num <= 0)
-		x++;
-	while (num != 0)
+	len = 0;
+	if (n == 0)
+		len = 1;
+	if (n < 0)
 	{
-		num = num / 10;
-		x++;
+		n *= -1;
+		len ++;
 	}
-	return (x);
-}
-
-int	cal_sign(int x, char *str)
-{
-	if (x == -2147483648)
-		x++;
-	if (x < 0)
+	while (n > 0)
 	{
-		str[0] = '-';
-		x = x * -1;
+		n = n / 10;
+		len++;
 	}
-	return (x);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	int		x;
-	int		len;
-	char	*str;
+	int			len;
+	char		*str;
+	long int	nbr;
 
-	x = n;
-	len = numlen(x);
-	str = malloc(sizeof(char) *(len + 1));
-	if (str == 0)
+	nbr = n;
+	len = nb_len(nbr);
+	str = malloc ((len) * sizeof(char) + 1);
+	if (!str)
 		return (NULL);
-	x = cal_sign(n, str);
-	if (n == 0)
-		str[0] = '0';
 	str[len] = '\0';
-	while (x != 0)
+	len = len - 1;
+	if (nbr == 0)
+		str[0] = '0';
+	if (nbr < 0)
 	{
-		str[len - 1] = x % 10 + 48;
-		x = x / 10;
+		nbr = nbr * -1;
+		str[0] = '-';
+	}
+	while (nbr > 0)
+	{
+		str[len] = (nbr % 10) + '0';
+		nbr = nbr / 10;
 		len--;
 	}
-	if (n == -2147483648)
-		str[10] = '8';
 	return (str);
 }
