@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:58 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/09 13:21:41 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/13 13:02:35 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	is_pec(t_game *game)
 	game->n_player = 0;
 	game->n_exit = 0;
 	i = 0;
-	while (game->map[i] )
+	while (game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j] != '\0')

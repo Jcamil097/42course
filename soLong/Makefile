@@ -6,7 +6,7 @@
 #    By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 08:54:44 by ubegona           #+#    #+#              #
-#    Updated: 2023/06/09 17:01:59 by jumoncad         ###   ########.fr        #
+#    Updated: 2023/06/13 17:04:25 by jumoncad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_FILES) $(HFILE)
 	@make -C libraries/mlx
-	@$(CC) $(CFLAGS)  -Imlx -I$(HFILE) -Lmlx -lmlx -framework OpenGL -framework AppKit $(SRC_FILES) -o $(NAME)
+	@$(CC) $(CFLAGS) -Imlx -I$(HFILE) -Lmlx -lmlx -framework OpenGL -framework AppKit $(SRC_FILES) -o $(NAME)
 	@mkdir -p $(OBJ_DIR)
 	@mv $(OBJ_FILES) obj
 	@echo "$(GREEN)███████████████████████████████████████████████████████████████████████████████████████████████████"
@@ -72,7 +72,6 @@ clean:
 fclean: clean 
 	@$(RM) $(NAME)
 	@make -C libraries/mlx/ clean
-
 	@echo "$(BLUE)██████████████████████████████████████████████████████████████████████████████████████████████████████████████████"
 	@echo "$(BLUE)█░░░░░░░░░░░░░░█░░░░░░█████████░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░██████████░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░███"
 	@echo "$(BLUE)█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░█████████░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░░░░░░░░░██░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀░░░░█"

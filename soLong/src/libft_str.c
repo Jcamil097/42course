@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:11:22 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/06/09 13:55:03 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/13 13:02:02 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_strnstr(const char *haystack, const char *needle)
 	while (((char *)haystack)[i])
 	{
 		j = 0;
-		while (((char *)haystack)[i + j] == ((char *)needle)[j] 
+		while (((char *)haystack)[i + j] == ((char *)needle)[j]
 		&& ((char *)haystack)[i + j])
 		{
 			if (!((char *)needle)[j + 1])

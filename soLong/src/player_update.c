@@ -6,13 +6,13 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:52:08 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/09 17:18:55 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:09:44 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void player_update_image(char key, t_game *game)
+static void	player_update_image(char key, t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img_player);
 	if (key == 'w')
@@ -25,7 +25,7 @@ static void player_update_image(char key, t_game *game)
 		game->img_player = mlx_xpm_file_to_image(game->mlx, "assets/images/magoL.xpm", &game->img_w, &game->img_h);
 }
 
-void player_w(t_game *game)
+void	player_w(t_game *game)
 {
 	player_update_image('w', game);
 	if (game->map[game->y_player][game->x_player] == 'E' && game->n_colect == 0)
@@ -35,12 +35,12 @@ void player_w(t_game *game)
 		game->moves++;
 		game->endgame = 1;
 		map_draw(game);
-		mlx_string_put(game->mlx, game->win, 600, 10, 0xFFFFFF, "WINNER");
-		mlx_string_put(game->mlx, game->win, 580, 30, 0xFFFFFF, "PRESS ESC OR Q");
+		print_winner(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
 		tombstone_draw(game);
-	else if (game->map[game->y_player][game->x_player] == '1' || game->map[game->y_player][game->x_player] == 'E')
+	else if (game->map[game->y_player][game->x_player] == '1'
+		|| game->map[game->y_player][game->x_player] == 'E')
 		game->y_player += 1;
 	else
 	{
@@ -54,7 +54,7 @@ void player_w(t_game *game)
 	}
 }
 
-void player_s(t_game *game)
+void	player_s(t_game *game)
 {
 	player_update_image('s', game);
 	if (game->map[game->y_player][game->x_player] == 'E' && game->n_colect == 0)
@@ -64,12 +64,12 @@ void player_s(t_game *game)
 		game->moves++;
 		game->endgame = 1;
 		map_draw(game);
-		mlx_string_put(game->mlx, game->win, 600, 10, 0xFFFFFF, "WINNER");
-		mlx_string_put(game->mlx, game->win, 580, 30, 0xFFFFFF, "PRESS ESC OR Q");
+		print_winner(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
 		tombstone_draw(game);
-	else if (game->map[game->y_player][game->x_player] == '1' || game->map[game->y_player][game->x_player] == 'E')
+	else if (game->map[game->y_player][game->x_player] == '1'
+		|| game->map[game->y_player][game->x_player] == 'E')
 		game->y_player -= 1;
 	else
 	{
@@ -83,7 +83,7 @@ void player_s(t_game *game)
 	}
 }
 
-void player_d(t_game *game)
+void	player_d(t_game *game)
 {
 	player_update_image('d', game);
 	if (game->map[game->y_player][game->x_player] == 'E' && game->n_colect == 0)
@@ -93,12 +93,12 @@ void player_d(t_game *game)
 		game->moves++;
 		game->endgame = 1;
 		map_draw(game);
-		mlx_string_put(game->mlx, game->win, 600, 10, 0xFFFFFF, "WINNER");
-		mlx_string_put(game->mlx, game->win, 580, 30, 0xFFFFFF, "PRESS ESC OR Q");
+		print_winner(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
 		tombstone_draw(game);
-	else if (game->map[game->y_player][game->x_player] == '1' || game->map[game->y_player][game->x_player] == 'E')
+	else if (game->map[game->y_player][game->x_player] == '1'
+		|| game->map[game->y_player][game->x_player] == 'E')
 		game->x_player -= 1;
 	else
 	{
@@ -112,7 +112,7 @@ void player_d(t_game *game)
 	}
 }
 
-void player_a(t_game *game)
+void	player_a(t_game *game)
 {
 	player_update_image('a', game);
 	if (game->map[game->y_player][game->x_player] == 'E' && game->n_colect == 0)
@@ -122,12 +122,12 @@ void player_a(t_game *game)
 		game->moves++;
 		game->endgame = 1;
 		map_draw(game);
-		mlx_string_put(game->mlx, game->win, 600, 10, 0xFFFFFF, "WINNER");
-		mlx_string_put(game->mlx, game->win, 580, 30, 0xFFFFFF, "PRESS ESC OR Q");
+		print_winner(game);
 	}
 	else if (game->map[game->y_player][game->x_player] == 'K')
 		tombstone_draw(game);
-	else if (game->map[game->y_player][game->x_player] == '1' || game->map[game->y_player][game->x_player] == 'E')
+	else if (game->map[game->y_player][game->x_player] == '1'
+		|| game->map[game->y_player][game->x_player] == 'E')
 		game->x_player += 1;
 	else
 	{

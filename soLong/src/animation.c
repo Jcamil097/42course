@@ -6,10 +6,9 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:09:18 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/06/09 16:09:23 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:08:39 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../include/so_long.h"
 

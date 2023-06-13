@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:52:26 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/09 16:33:51 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/13 13:08:48 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	argv_checker(char *argv)
 		i++;
 	i -= 1;
 	/* if (argv[i] == 'r' && argv[i - 1] == 'e' && argv[i - 2] == 'b' && argv[i - 3] == '.') */
-	if(ft_strnstr(argv, ".ber"))
+	if (ft_strnstr(argv, ".ber"))
 		return (1);
 	return (0);
 }
@@ -73,13 +73,13 @@ int	main(int argc, char **argv)
 		{
 			if (game.map)
 				free_map(game.map);
-			printf("Error\nInvalid Map");
+			ft_putstr_fd("Error: Invalid Map", 1);
 			exit(1);
 		}
 	}
 	else
 	{
-		printf("Error\nInvalid Sytax");
+		ft_putstr_fd("Error: Invalid Sytax", 1);
 		exit(1);
 	}
 	return (0);
