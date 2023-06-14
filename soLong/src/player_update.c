@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:52:08 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/13 17:09:44 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:38:10 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@ static void	player_update_image(char key, t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img_player);
 	if (key == 'w')
-		game->img_player = mlx_xpm_file_to_image(game->mlx, "assets/images/magoR.xpm", &game->img_w, &game->img_h);
+		game->img_player = mlx_xpm_file_to_image
+			(game->mlx, "assets/images/magoR.xpm", &game->img_w, &game->img_h);
 	else if (key == 's')
-		game->img_player = mlx_xpm_file_to_image(game->mlx, "assets/images/magoL.xpm", &game->img_w, &game->img_h);
+		game->img_player = mlx_xpm_file_to_image
+			(game->mlx, "assets/images/magoL.xpm", &game->img_w, &game->img_h);
 	else if (key == 'd')
-		game->img_player = mlx_xpm_file_to_image(game->mlx, "assets/images/magoR.xpm", &game->img_w, &game->img_h);
+		game->img_player = mlx_xpm_file_to_image
+			(game->mlx, "assets/images/magoR.xpm", &game->img_w, &game->img_h);
 	else if (key == 'a')
-		game->img_player = mlx_xpm_file_to_image(game->mlx, "assets/images/magoL.xpm", &game->img_w, &game->img_h);
+		game->img_player = mlx_xpm_file_to_image
+			(game->mlx, "assets/images/magoL.xpm", &game->img_w, &game->img_h);
 }
 
 void	player_w(t_game *game)

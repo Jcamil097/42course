@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:42 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/13 17:09:09 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:36:02 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ static void	exit_draw(t_game *game, int x, int y)
 	if (game->n_colect == 0)
 	{
 		mlx_destroy_image(game->mlx, game->img_exit);
-		game->img_exit = mlx_xpm_file_to_image(game->mlx, "assets/images/salida2.xpm",&game->img_w, &game->img_h);
+		game->img_exit = mlx_xpm_file_to_image
+			(game->mlx, "assets/images/salida2.xpm", \
+				&game->img_w, &game->img_h);
 	}
 	img_draw(game, game->img_exit, x, y);
 }
@@ -67,7 +69,8 @@ void	tombstone_draw(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img_player);
 	mlx_clear_window(game->mlx, game->win);
-	game->img_player = mlx_xpm_file_to_image(game->mlx, "assets/images/T.xpm", &game->img_w, &game->img_h);
+	game->img_player = mlx_xpm_file_to_image
+		(game->mlx, "assets/images/T.xpm", &game->img_w, &game->img_h);
 	game->endgame = 1;
 	mlx_string_put(game->mlx, game->win, 600, 10, 0xFFFFFF, "GAME OVER");
 	mlx_string_put(game->mlx, game->win, 580, 30, 0xFFFFFF, "PRESS ESC OR Q");

@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:09:18 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/06/13 17:08:39 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:34:04 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@ int	animation(t_game *game)
 	game->loop = 0;
 	mlx_destroy_image(game->mlx, game->img_enemie);
 	if (game->pos_enemies == 1)
-		game->img_enemie = mlx_xpm_file_to_image(game->mlx, "assets/images/ene1.xpm", &game->img_w, &game->img_h);
+		game->img_enemie = mlx_xpm_file_to_image
+			(game->mlx, "assets/images/ene1.xpm", &game->img_w, &game->img_h);
 	else if (game->pos_enemies == 2)
-		game->img_enemie = mlx_xpm_file_to_image(game->mlx, "assets/images/ene2.xpm", &game->img_w, &game->img_h);
+		game->img_enemie = mlx_xpm_file_to_image
+			(game->mlx, "assets/images/ene2.xpm", &game->img_w, &game->img_h);
 	else if (game->pos_enemies == 3)
-		game->img_enemie = mlx_xpm_file_to_image(game->mlx, "assets/images/ene3.xpm", &game->img_w, &game->img_h);
+		game->img_enemie = mlx_xpm_file_to_image
+			(game->mlx, "assets/images/ene3.xpm", &game->img_w, &game->img_h);
 	else if (game->pos_enemies == 4)
 	{
-		game->img_enemie = mlx_xpm_file_to_image(game->mlx, "assets/images/ene4.xpm", &game->img_w, &game->img_h);
+		game->img_enemie = mlx_xpm_file_to_image
+			(game->mlx, "assets/images/ene4.xpm", &game->img_w, &game->img_h);
 		game->pos_enemies = 0;
 	}
 	map_draw(game);
