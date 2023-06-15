@@ -7,10 +7,6 @@
 
 <p> Este proyecto es un pequeño juego en 2D. Está diseñado para hacerte trabajar con texturas y sprites y algunos otros elementos básicos de jugabilidad implementado la libreia MiniLibX. </p>
 
-<h2> Empezando </h2>
-
-🚨 Verifique que tenga mlxlib instalado en su máquina.
-
 <h2> Iniciar </h2>
 
 $make
