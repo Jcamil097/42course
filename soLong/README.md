@@ -31,7 +31,6 @@ El objetivo del jugador es recolectar todos los coleccionables presentes en el m
   <tr>
     <td>Celda 4</td>
     <td>Celda 5</td>
-    <td>Celda 6</td>
   </tr>
 </table>
 
