@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:19:42 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/06/13 13:09:59 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:44:45 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_game
 	int		n_exit;
 	int		x_player;
 	int		y_player;
+	int		x_enemy;
+	int		y_enemy;
 	int		moves;
 	int		endgame;
 	int		pos_enemies;

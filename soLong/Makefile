@@ -6,7 +6,7 @@
 #    By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 08:54:44 by ubegona           #+#    #+#              #
-#    Updated: 2023/06/14 18:48:16 by jumoncad         ###   ########.fr        #
+#    Updated: 2023/06/15 18:29:50 by jumoncad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,15 +35,20 @@ SRC_FILES = src/animation.c \
 			src/player_update.c \
 			src/so_long.c
 
+MLX =	libraries/mlx
+MFLAGS = -lmlx -framework OpenGL -framework AppKit
+
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
+.SILENT:
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES) $(HFILE)
-	@make -C libraries/mlx
-	@$(CC) $(CFLAGS) -Imlx -I$(HFILE) -Lmlx -lmlx -framework OpenGL -framework AppKit $(SRC_FILES) -o $(NAME)
+	@make -C $(MLX) 2> warnigs_total
+	@$(CC) $(CFLAGS) $(MFLAGS) $(SRC_FILES) -o $(NAME)
 	@mkdir -p $(OBJ_DIR)
 	@mv $(OBJ_FILES) obj
+	@echo "" 
 	@echo "$(GREEN)░██████╗░█████╗░██╗░░░░░░█████╗░███╗░░██╗░██████╗░"
 	@echo "$(GREEN)██╔════╝██╔══██╗██║░░░░░██╔══██╗████╗░██║██╔════╝░"
 	@echo "$(GREEN)╚█████╗░██║░░██║██║░░░░░██║░░██║██╔██╗██║██║░░██╗░"

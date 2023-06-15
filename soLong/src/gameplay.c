@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:51 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/09 17:01:45 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:44:49 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	game_events(int keycode, t_game *game)
 	if (keycode == W || keycode == UP)
 	{
 		game->y_player -= 1;
+		game->y_enemy -= 1;
 		player_w(game);
 	}
 	else if (keycode == S || keycode == DOWN)

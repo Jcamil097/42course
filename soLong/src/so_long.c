@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:52:26 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/13 13:08:48 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:40:48 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,8 @@ char	**read_map(char *path)
 
 static int	argv_checker(char *argv)
 {
-	int	i;
-
 	if (!argv)
 		return (0);
-	i = 0;
-	while (argv[i])
-		i++;
-	i -= 1;
-	/* if (argv[i] == 'r' && argv[i - 1] == 'e' && argv[i - 2] == 'b' && argv[i - 3] == '.') */
 	if (ft_strnstr(argv, ".ber"))
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:52:08 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/14 18:38:10 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:44:39 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	player_w(t_game *game)
 	if (game->map[game->y_player][game->x_player] == 'E' && game->n_colect == 0)
 	{
 		mlx_clear_window(game->mlx, game->win);
-		game->map[game->y_player + 1][game->x_player] = '0';
+		game->map[game->y_player + 1][game->x_player] = '0'; 
 		game->moves++;
 		game->endgame = 1;
 		map_draw(game);
