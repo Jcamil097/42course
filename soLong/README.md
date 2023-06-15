@@ -23,6 +23,18 @@ $./so_long assets/maps/<map_name>.ber
 
 El objetivo del jugador es recolectar todos los coleccionables presentes en el mapa y luego escapar con un movimiento mínimo.
 
+<table class="default">
+  <tr>
+    <td>Teclado</td>
+    <td>Acción</td>
+  </tr>
+  <tr>
+    <td>Celda 4</td>
+    <td>Celda 5</td>
+    <td>Celda 6</td>
+  </tr>
+</table>
+
 TECLADO	ACCIÓN
 W,↑	Ascender
 S,↓	Mover hacia abajo
