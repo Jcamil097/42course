@@ -14,3 +14,7 @@
 <h2> Iniciar </h2>
 
 $make
+
+<h2> Usar </h2>
+
+$./so_long assets/maps/<map_name>.ber
