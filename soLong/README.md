@@ -30,13 +30,22 @@ El objetivo del jugador es recolectar todos los coleccionables presentes en el m
   </tr>
   <tr>
     <td>W,↑</td>
-    <td>Ascender</td>
+    <td> Mover hacia arriba</td>
+  </tr>
+  <tr>
+    <td>S,↓</td>
+    <td> Mover hacia abajo</td>
+  </tr>
+  <tr>
+    <td>A,←</td>
+    <td> Mover hacia la izquierda</td>
+  </tr>
+  <tr>
+    <td>D,→</td>
+    <td> Mover a la derecha</td>
+  </tr>
+  <tr>
+    <td>ESC,Q</td>
+    <td> Cierra la ventana del juego</td>
   </tr>
 </table>
-
-TECLADO	ACCIÓN
-W,↑	Ascender
-S,↓	Mover hacia abajo
-A,←	Mover hacia la izquierda
-D,→	Mover a la derecha
-ESC ⎋	Cierra la ventana del juego
