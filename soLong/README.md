@@ -18,3 +18,14 @@ $make
 <h2> Usar </h2>
 
 $./so_long assets/maps/<map_name>.ber
+
+<h2> CÓMO JUGAR </h2>
+
+El objetivo del jugador es recolectar todos los coleccionables presentes en el mapa y luego escapar con un movimiento mínimo.
+
+TECLADO	ACCIÓN
+W,↑	Ascender
+S,↓	Mover hacia abajo
+A,←	Mover hacia la izquierda
+D,→	Mover a la derecha
+ESC ⎋	Cierra la ventana del juego
