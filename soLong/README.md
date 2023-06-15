@@ -29,8 +29,8 @@ El objetivo del jugador es recolectar todos los coleccionables presentes en el m
     <td>Acción</td>
   </tr>
   <tr>
-    <td>Celda 4</td>
-    <td>Celda 5</td>
+    <td>W,↑</td>
+    <td>Ascender</td>
   </tr>
 </table>
 
