@@ -1,6 +1,6 @@
 <h1> SO_LONG </h1>
 
-<img width="1215" alt="Screen_Shot" src="https://github.com/Jcamil097/42course/blob/main/soLong/assets/images/gifs.gif">
+<img width="1215" alt="Screen_Shot" src="https://github.com/Jcamil097/42course/blob/main/soLong/assets/images/gifs.gifs2">
 
 <h2> Objetivos </h2>
 
