@@ -1,7 +1,9 @@
 
 <img width="1215" alt="Screen_Shot" src="https://github.com/Jcamil097/42course/blob/main/header_002_.png">
 
-<p>Repositorio para los proyectos realizados en 42 Urduliz.</p>
+<p>
+Este repositorio contiene una colección de proyectos que he desarrollado en el cursus de 42Urduliz. Cada proyecto se encuentra en su propia carpeta.
+</p>
 
 <h1>Proyectos</h1>
 
