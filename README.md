@@ -6,7 +6,7 @@
 <h1>Proyectos</h1>
 
 <ul>
-  <li>LIBFT (libft)</li>
+  <li>LIBFT [(./libft)](https://github.com/Jcamil097/42course/tree/main/libft)</li>
   <li>Elemento 2</li>
   <li>Elemento 3</li>
 </ul>
