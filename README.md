@@ -6,7 +6,7 @@
 <h1>Proyectos</h1>
 
 <ul>
-  <li>LIBFT (./libft)</li>
+  <li>LIBFT (libft)</li>
   <li>Elemento 2</li>
   <li>Elemento 3</li>
 </ul>
