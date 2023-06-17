@@ -11,4 +11,4 @@
 
 <a href="https://github.com/Tripouille/gnlTester">Tripouille/gnlTester</a>
 
-<a href="https://github.com/grouville/valgrind_42">Tripouille/gnlTester</a>
+<a href="https://github.com/grouville/valgrind_42">valgrind_42</a>
