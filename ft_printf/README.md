@@ -22,22 +22,8 @@ Para utilizar la función `ft_printf`, puedes seguir los siguientes pasos:
 <h2> Ejemplo </h2>
 
 <p> 
-  
-#include "ft_printf.h"
+ ft_printf("Número: %d\n", num);
  
-int main()
- 
-{
-  int num = 42;
- 
-  char *str = "Hello, world!"
- 
-  ft_printf("Número: %d\n", num);
- 
-  ft_printf("Cadena: %s\n", str);
- 
-  return 0;
- 
- }
+ ft_printf("Cadena: %s\n", str);
  
 </p>
