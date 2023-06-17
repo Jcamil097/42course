@@ -7,6 +7,8 @@
 
 <p> gcc -Wall -Werror -Wextra -D BUFFER_SIZE=xx get_next_line.c get_next_line_utils.c && ./a.out </p>
 
+<p> gcc -Wall -Werror -Wextra -D BUFFER_SIZE=xx get_next_line_bonus.c get_next_line_utils_bonus.c && ./a.out </p>
+
 <h2>📋 Testing </h2>
 
 <a href="https://github.com/Tripouille/gnlTester">Tripouille/gnlTester</a>
