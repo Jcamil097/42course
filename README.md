@@ -3,6 +3,11 @@
 
 <p>Repositorio para los proyectos realizados en 42 Urduliz.</p>
 
-<h1>LIBFT</h1>
+<h1>Proyectos</h1>
 
-LIBFT(./libft)
+<ul>
+  <li>LIBFT (./libft)</li>
+  <li>Elemento 2</li>
+  <li>Elemento 3</li>
+</ul>
+
