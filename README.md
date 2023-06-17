@@ -6,8 +6,8 @@
 <h1>Proyectos</h1>
 
 <ul>
-  <li>LIBFT [(./libft)](https://github.com/Jcamil097/42course/tree/main/libft)</li>
-  <li>Elemento 2</li>
+  <li>LIBFT (https://github.com/Jcamil097/42course/tree/main/libft)</li>
+  <li><a href="https://github.com/Jcamil097/42course/tree/main/libft">Enlace a la carpeta</a></li>
   <li>Elemento 3</li>
 </ul>
 
