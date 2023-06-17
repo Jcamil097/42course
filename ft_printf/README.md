@@ -28,16 +28,15 @@ Para utilizar la función `ft_printf`, puedes seguir los siguientes pasos:
 int main()
  
 {
+  int num = 42;
  
- int num = 42;
+  char *str = "Hello, world!"
  
- char *str = "Hello, world!"
+  ft_printf("Número: %d\n", num);
  
- ft_printf("Número: %d\n", num);
+  ft_printf("Cadena: %s\n", str);
  
- ft_printf("Cadena: %s\n", str);
- 
- return 0;
+  return 0;
  
  }
  
