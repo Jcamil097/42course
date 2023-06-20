@@ -6,49 +6,57 @@
 #    By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 08:54:44 by ubegona           #+#    #+#              #
-#    Updated: 2023/06/15 18:29:50 by jumoncad         ###   ########.fr        #
+#    Updated: 2023/06/20 13:59:12 by jumoncad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 	= so_long
-OBJ_DIR = obj/
-CC 		= gcc
-CFLAGS 	= -Wall -Wextra -Werror
-RM 		= rm -f
-HFILE 	= include/so_long.h
+NAME		:= so_long
+
+INCS		:= 	include/so_long.h
+
+LIBS		:= mlx
+LIBS_TARGET	+= libraries/mlx/libmlx.a
+MFLAGS		:= -framework OpenGL -framework AppKit
 
 DEF_COLOR = \033[0;39m
 RED = \033[0;91m
 GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
-SRC_FILES = src/animation.c \
-			src/draw.c \
-			src/ft_itoa.c \
-			src/ft_split.c \
-			src/gameplay.c \
-			src/get_next_line.c \
-			src/init.c \
-			src/libft_str.c \
-			src/map_validate.c \
-			src/moves.c \
-			src/player_update.c \
-			src/so_long.c
+SRC_DIR     := src
+SRCS        := animation.c \
+            draw.c \
+            ft_itoa.c \
+            ft_split.c \
+            gameplay.c \
+            get_next_line.c \
+            init.c \
+            libft_str.c \
+            map_validate.c \
+            moves.c \
+            player_update.c \
+            so_long.c
+			
+SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
-MLX =	libraries/mlx
-MFLAGS = -lmlx -framework OpenGL -framework AppKit
+BUILD_DIR	:= obj
+OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
-OBJ_FILES = $(SRC_FILES:.c=.o)
+CC			:= cc
+CFLAGS		:= -g3 -Wall -Wextra -Werror
+CPPFLAGS	:= $(addprefix -I,$(INCS))
+LDFLAGS		:= $(addprefix -L,$(dir $(LIBS_TARGET)))
+LDLIBS		:= $(addprefix -l,$(LIBS))
+
+RM			:= rm -f
+RF			:= rm -rf
+DIR_DUP		= mkdir -p $(@D)
 
 .SILENT:
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES) $(HFILE)
-	@make -C $(MLX) 2> warnigs_total
-	@$(CC) $(CFLAGS) $(MFLAGS) $(SRC_FILES) -o $(NAME)
-	@mkdir -p $(OBJ_DIR)
-	@mv $(OBJ_FILES) obj
-	@echo "" 
+$(NAME): $(OBJS) $(LIBS_TARGET)
+	@$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) $(MFLAGS) -o $(NAME)
 	@echo "$(GREEN)░██████╗░█████╗░██╗░░░░░░█████╗░███╗░░██╗░██████╗░"
 	@echo "$(GREEN)██╔════╝██╔══██╗██║░░░░░██╔══██╗████╗░██║██╔════╝░"
 	@echo "$(GREEN)╚█████╗░██║░░██║██║░░░░░██║░░██║██╔██╗██║██║░░██╗░"
@@ -57,18 +65,30 @@ $(NAME): $(OBJ_FILES) $(HFILE)
 	@echo "$(GREEN)╚═════╝░░╚════╝░╚══════╝░╚════╝░╚═╝░░╚══╝░╚═════╝░"
 	@echo "$(YELLOW)\n !Use this command ./so_long assets/maps/<map_name>.ber\n$(DEF_COLOR)" 
 	
-clean: 
-	@rm -rf $(OBJ_DIR)
-	
-fclean: clean 
-	@$(RM) $(NAME)
-	@make -C libraries/mlx/ clean
+$(LIBS_TARGET):
+	@$(MAKE) -C $(@D) 2> /dev/null
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(DIR_DUP)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+
+clean:
+	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
+	$(RM) $(OBJS) $(DEPS)
 	@echo "$(RED)░█████╗░██╗░░░░░███████╗░█████╗░███╗░░██╗███████╗██████╗░"
 	@echo "$(RED)██╔══██╗██║░░░░░██╔════╝██╔══██╗████╗░██║██╔════╝██╔══██╗"
 	@echo "$(RED)██║░░╚═╝██║░░░░░█████╗░░███████║██╔██╗██║█████╗░░██║░░██║"
 	@echo "$(RED)██║░░██╗██║░░░░░██╔══╝░░██╔══██║██║╚████║██╔══╝░░██║░░██║"
 	@echo "$(RED)╚█████╔╝███████╗███████╗██║░░██║██║░╚███║███████╗██████╔╝"
 	@echo "$(RED)░╚════╝░╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝╚══════╝╚═════╝░"
-re : fclean all
+	
+fclean: clean
+	$(RM) $(NAME)
+	$(RF) ./fdf.dSYM
+	$(RF) $(BUILD_DIR)
 
-.PHONY: all clean fclean re
+re:
+	$(MAKE) fclean
+	$(MAKE) all
+
+.PHONY: clean fclean re
