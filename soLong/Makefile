@@ -6,7 +6,7 @@
 #    By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 08:54:44 by ubegona           #+#    #+#              #
-#    Updated: 2023/06/20 13:59:12 by jumoncad         ###   ########.fr        #
+#    Updated: 2023/06/21 12:14:27 by jumoncad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,17 +24,17 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 SRC_DIR     := src
-SRCS        := animation.c \
-            draw.c \
+SRCS        := animation_enemy.c \
+            draw_game.c \
             ft_itoa.c \
             ft_split.c \
-            gameplay.c \
+            game_events.c \
             get_next_line.c \
-            init.c \
+            init_game.c \
             libft_str.c \
             map_validate.c \
-            moves.c \
-            player_update.c \
+            print_moves.c \
+            player_move.c \
             so_long.c
 			
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
