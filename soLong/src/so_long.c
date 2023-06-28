@@ -5,39 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/01 18:52:26 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/15 17:40:48 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/06/28 12:30:33 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/06/28 17:01:57 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	**read_map(char *path)
+void	ft_finishable_map(t_game game, int x, int y, int *count)
 {
-	int		fd;
-	char	*line;
-	char	*holder_map;
-	char	*holder;
-	char	**map;
-
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		return (NULL);
-	holder_map = ft_strdup("");
-	while (1)
+	if (game.mapcopy[x][y] == 'C' || game.mapcopy[x][y] == 'E')
+		(*count)++;
+	if (game.mapcopy[x][y] != '1' && game.mapcopy[x][y] != 'K'
+		&& game.mapcopy[x][y])
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		holder = holder_map;
-		holder_map = ft_strjoin(holder, line);
-		free(line);
-		free(holder);
+		game.mapcopy[x][y] = '1';
+		ft_finishable_map(game, x + 1, y, count);
+		ft_finishable_map(game, x - 1, y, count);
+		ft_finishable_map(game, x, y + 1, count);
+		ft_finishable_map(game, x, y - 1, count);
 	}
-	map = ft_split(holder_map, '\n');
-	free(holder_map);
-	close(fd);
-	return (map);
 }
 
 static int	argv_checker(char *argv)
@@ -49,27 +36,33 @@ static int	argv_checker(char *argv)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+void	so_long(char *map)
 {
 	t_game	game;
 
-	if (argc == 2)
+	game.map = read_map(map);
+	game.mapcopy = copy_map(game.map);
+	game.row_map = count_rows(game.map);
+	game.col_map = count_columns(game.map);
+	game.p_x_player = search_position_x(game, 'P');
+	game.p_y_player = search_position_y(game, 'P');
+	ft_finishable_map(game, game.p_x_player, game.p_y_player, &game.count);
+	if (map_checker(&game) && argv_checker(map) 
+		&& game.count == game.n_colect + 1)
+		init(game);
+	else
 	{
-		game.map = read_map(argv[1]);
-		if (map_checker(&game) && argv_checker(argv[1]))
-		{
-			game_init(&game);
-			gameplay(&game);
-			mlx_loop(game.mlx);
-		}
-		else
-		{
-			if (game.map)
-				free_map(game.map);
-			ft_putstr_fd("Error: Invalid Map", 1);
-			exit(1);
-		}
+		if (game.map)
+			free_map(game.map);
+		ft_putstr_fd("Error: Map not playable", 1);
+		exit(1);
 	}
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc == 2)
+		so_long(argv[1]);
 	else
 	{
 		ft_putstr_fd("Error: Invalid Sytax", 1);

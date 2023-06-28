@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:55 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/14 18:37:31 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:01:35 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,11 @@ void	game_init(t_game *game)
 	game->loop = 0;
 	img_init(game);
 	map_draw(game);
+}
+
+void	init(t_game game)
+{
+	game_init(&game);
+	gameplay(&game);
+	mlx_loop(game.mlx);
 }

@@ -6,7 +6,7 @@
 #    By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 08:54:44 by ubegona           #+#    #+#              #
-#    Updated: 2023/06/21 12:14:27 by jumoncad         ###   ########.fr        #
+#    Updated: 2023/06/28 16:27:35 by jumoncad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,10 @@ SRCS        := animation_enemy.c \
             init_game.c \
             libft_str.c \
             map_validate.c \
+			player_move.c \
+			position_player.c \
             print_moves.c \
-            player_move.c \
+            r_c_map.c \
             so_long.c
 			
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
@@ -43,7 +45,7 @@ BUILD_DIR	:= obj
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 CC			:= cc
-CFLAGS		:= -g3 -Wall -Wextra -Werror
+CFLAGS		:= -g3 -Wall -Wextra -Werror 
 CPPFLAGS	:= $(addprefix -I,$(INCS))
 LDFLAGS		:= $(addprefix -L,$(dir $(LIBS_TARGET)))
 LDLIBS		:= $(addprefix -l,$(LIBS))
