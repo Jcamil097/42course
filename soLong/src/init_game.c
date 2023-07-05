@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:55 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/28 17:01:35 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/06/30 13:22:28 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 static void	img_init(t_game *game)
 {
 	game->img_backg = mlx_xpm_file_to_image
-		(game->mlx, "assets/images/cesped.xpm", &game->img_w, &game->img_h);
+		(game->mlx, "assets/textures/cesped.xpm", &game->img_w, &game->img_h);
 	game->img_wall = mlx_xpm_file_to_image
-		(game->mlx, "assets/images/muro.xpm", &game->img_w, &game->img_h);
+		(game->mlx, "assets/textures/muro.xpm", &game->img_w, &game->img_h);
 	game->img_player = mlx_xpm_file_to_image
-		(game->mlx, "assets/images/magoR.xpm", &game->img_w, &game->img_h);
+		(game->mlx, "assets/textures/magoR.xpm", &game->img_w, &game->img_h);
 	game->img_colect = mlx_xpm_file_to_image
-		(game->mlx, "assets/images/skull.xpm", &game->img_w, &game->img_h);
+		(game->mlx, "assets/textures/mon1.xpm", &game->img_w, &game->img_h);
 	game->img_exit = mlx_xpm_file_to_image
-		(game->mlx, "assets/images/salida.xpm", &game->img_w, &game->img_h);
+		(game->mlx, "assets/textures/salida.xpm", &game->img_w, &game->img_h);
 	game->img_enemie = mlx_xpm_file_to_image
-		(game->mlx, "assets/images/ene1.xpm", &game->img_w, &game->img_h);
+		(game->mlx, "assets/textures/ene1.xpm", &game->img_w, &game->img_h);
 	game->img_final = mlx_xpm_file_to_image
-		(game->mlx, "assets/images/final.xpm", &game->img_w, &game->img_h);
+		(game->mlx, "assets/textures/final.xpm", &game->img_w, &game->img_h);
 }
 
 static void	size_window_init(t_game *game)

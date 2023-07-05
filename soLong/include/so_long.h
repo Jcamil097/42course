@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:19:42 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/06/28 17:06:07 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/07/05 11:22:51 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ typedef struct s_game
 	int		moves;
 	int		endgame;
 	int		pos_enemies;
+	int		pos_colect;
 	int		loop;
+	int		loop2;
 	int		x;
 	int		y;
 	int		p_x_player;
@@ -87,6 +89,7 @@ typedef struct s_map
 
 /***********animation***********/
 int		animation(t_game *game);
+int		animation_colect(t_game *game);
 
 /***********draw***********/
 void	img_draw(t_game *game, void *image, int x, int y);

@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 12:30:33 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/06/28 17:01:57 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/07/05 11:17:39 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,16 @@ void	ft_finishable_map(t_game game, int x, int y, int *count)
 
 static int	argv_checker(char *argv)
 {
+	int	i;
+
 	if (!argv)
 		return (0);
-	if (ft_strnstr(argv, ".ber"))
+	i = 0;
+	while (argv[i])
+		i++;
+	i -= 1;
+	if (argv[i] == 'r' && argv[i - 1] == 'e' && argv[i - 2] == 'b'
+		&& argv [i - 3] == '.')
 		return (1);
 	return (0);
 }
@@ -46,26 +53,35 @@ void	so_long(char *map)
 	game.col_map = count_columns(game.map);
 	game.p_x_player = search_position_x(game, 'P');
 	game.p_y_player = search_position_y(game, 'P');
+	game.count = 0;
 	ft_finishable_map(game, game.p_x_player, game.p_y_player, &game.count);
-	if (map_checker(&game) && argv_checker(map) 
-		&& game.count == game.n_colect + 1)
-		init(game);
-	else
+	if (map_checker(&game))
 	{
-		if (game.map)
-			free_map(game.map);
-		ft_putstr_fd("Error: Map not playable", 1);
-		exit(1);
+		if (game.count == game.n_colect + 1)
+			init(game);
+		else
+			ft_putstr_fd("Error: Map not playable ", 1);
 	}
+	if (game.map)
+		free_map(game.map);
+	exit(1);
 }
 
 int	main(int argc, char **argv)
 {
 	if (argc == 2)
-		so_long(argv[1]);
+	{
+		if (argv_checker(argv[1]))
+			so_long(argv[1]);
+		else
+		{
+			ft_putstr_fd("Error: Invalid File", 1);
+			exit(1);
+		}
+	}
 	else
 	{
-		ft_putstr_fd("Error: Invalid Sytax", 1);
+		ft_putstr_fd("Error: Missing Arguments", 1);
 		exit(1);
 	}
 	return (0);

@@ -6,11 +6,27 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:22:37 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/06/28 17:02:30 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/07/05 11:19:32 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	tombstone_draw(t_game *game)
+{
+	int	w;
+
+	mlx_destroy_image(game->mlx, game->img_player);
+	mlx_clear_window(game->mlx, game->win);
+	game->img_player = mlx_xpm_file_to_image
+		(game->mlx, "assets/textures/T.xpm", &game->img_w, &game->img_h);
+	game->endgame = 1;
+	w = game->map_w / 2;
+	mlx_string_put(game->mlx, game->win, w, 20, 0xFFFFFF, "GAME OVER");
+	mlx_string_put(game->mlx, game->win, 
+		w - 10, 40, 0xFFFFFF, "PRESS ESC OR Q");
+	map_draw(game);
+}
 
 int	map_size(int map_size, char **map)
 {
@@ -55,7 +71,10 @@ char	**read_map(char *path)
 
 	map.fd = open(path, O_RDONLY);
 	if (map.fd == -1)
-		return (NULL);
+	{
+		ft_putstr_fd("Error: Map not found\n", 2);
+		exit(0);
+	}
 	map.holder_map = ft_strdup("");
 	while (1)
 	{

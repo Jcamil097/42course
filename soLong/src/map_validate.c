@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:58 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/15 17:53:32 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/07/05 11:21:00 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	is_retangular(char **map)
 	while (map[i])
 	{
 		if (ft_strlen(map[i]) != ft_strlen(map[0]))
+		{
+			ft_putstr_fd("Error: Map not retangular", 1);
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -97,7 +100,10 @@ int	valid_characters(char **map)
 		{
 			if (map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != 'C'
 				&& map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'K')
+			{
+				ft_putstr_fd("Error: Invalid character", 1);
 				return (0);
+			}
 			j++;
 		}
 		i++;
