@@ -42,4 +42,5 @@ void	display_moves(t_game *game)
 	mlx_string_put(game->mlx, game->win, 25, 50, 0xFFFFFF, "COINS: ");
 	mlx_string_put(game->mlx, game->win, 90, 50, 0xFFFFFF, n_coins);
 	free(str);
+	free(n_coins);
 }
