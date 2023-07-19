@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:51 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/07/05 11:20:19 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/07/18 13:54:07 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int	exit_game(t_game *game)
 	mlx_destroy_image(game->mlx, game->img_exit);
 	mlx_destroy_image(game->mlx, game->img_enemie);
 	mlx_destroy_window(game->mlx, game->win);
+	
 	free(game->mlx);
+	system("leaks so_long");
 	exit(0);
 	return (0);
 }

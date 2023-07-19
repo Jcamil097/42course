@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:22:37 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/07/05 11:19:32 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/07/17 16:29:49 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	tombstone_draw(t_game *game)
 	game->endgame = 1;
 	w = game->map_w / 2;
 	mlx_string_put(game->mlx, game->win, w, 20, 0xFFFFFF, "GAME OVER");
-	mlx_string_put(game->mlx, game->win, 
+	mlx_string_put(game->mlx, game->win,
 		w - 10, 40, 0xFFFFFF, "PRESS ESC OR Q");
 	map_draw(game);
 }

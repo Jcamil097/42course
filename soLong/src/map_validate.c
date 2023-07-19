@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:51:58 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/07/05 11:21:00 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/07/17 16:29:29 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_retangular(char **map)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	if (!map)
 		return (0);
 	while (map[i])
@@ -113,8 +113,8 @@ int	valid_characters(char **map)
 
 int	map_checker(t_game *game)
 {
-	if (is_retangular(game->map) && is_walls(game->map) && is_characte_pec(game)
-		&& valid_characters(game->map))
+	if (is_retangular(game->map) && is_walls(game->map)
+		&& is_characte_pec(game) && valid_characters(game->map))
 		return (1);
 	return (0);
 }

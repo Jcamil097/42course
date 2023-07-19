@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 12:30:33 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/07/05 11:17:39 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/07/17 16:22:27 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	so_long(char *map)
 	game.p_x_player = search_position_x(game, 'P');
 	game.p_y_player = search_position_y(game, 'P');
 	game.count = 0;
-	ft_finishable_map(game, game.p_x_player, game.p_y_player, &game.count);
 	if (map_checker(&game))
 	{
+		ft_finishable_map(game, game.p_x_player, game.p_y_player, &game.count);
 		if (game.count == game.n_colect + 1)
 			init(game);
 		else
@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_putstr_fd("Error: Missing Arguments", 1);
+		ft_putstr_fd("Error: Arguments", 1);
 		exit(1);
 	}
 	return (0);

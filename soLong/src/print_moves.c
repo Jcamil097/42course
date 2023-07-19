@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 18:52:03 by igvaz-fe          #+#    #+#             */
-/*   Updated: 2023/06/30 13:19:00 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:47:10 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ void	display_moves(t_game *game)
 	mlx_string_put(game->mlx, game->win, 25, 50, 0xFFFFFF, "COINS: ");
 	mlx_string_put(game->mlx, game->win, 90, 50, 0xFFFFFF, n_coins);
 	free(str);
+	free(n_coins);
 }
