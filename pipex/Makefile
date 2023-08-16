@@ -5,51 +5,57 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/10 12:27:28 by jumoncad          #+#    #+#              #
-#    Updated: 2023/04/10 13:11:22 by jumoncad         ###   ########.fr        #
+#    Created: 2023/07/13 12:19:17 by jumoncad          #+#    #+#              #
+#    Updated: 2023/08/15 13:00:02 by jumoncad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
+NAME		=	pipex
 
-CC = gcc -g3
-CFLAGS = -Wall -Wextra -Werror
+SRCS_FILES	= 	${shell find ./src -name "*.c"}
+BONUS_FILES	= 	${shell find ./src_bonus -name "*.c"}
 
-GREEN			=	"\\x1b[32m"
-YELLOW			=	"\\x1b[33m"
-RED				=	"\\x1b[31m"
+SRCS_MAN	= 	$(SRCS_FILES)
+OBJS_MAN	=	$(patsubst %.c,%.o,$(SRCS_MAN))
 
-INC = ./inc/pipex.h \
-	
-SRC = \
-	./src/main.c \
-	./src/pipex.c \
-	./src/pipex_utils.c \
-	./src/utils.c \
-	./src/ft_splitpath.c \
-	./src/free.c \
-	
-OBJ = $(SRC:.c=.o)
+SRCS_BONUS	= 	$(BONUS_FILES)
+OBJS_BONUS	=	$(patsubst %.c,%.o,$(SRCS_BONUS))
 
-all: 	$(NAME)
+LIB_DIR		=	libft
+HEADER		=	-I./include/pipex.h
+HEADER_B	=	-I./include/pipex_bonus.h
 
-$(NAME): 	$(OBJ)
-	@$(CC) $(OBJ) -o $(NAME)
-	@printf \
-	"                                                                       \n"
-	@printf \
-	"$(GREEN)-------------- Compiled --------------\n\n"
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror
+RM			=	rm -f
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c -o $@ $<
-	
+all:		$(NAME)
+
+$(NAME):	$(OBJS_MAN) include/pipex.h
+			@echo "\033[33m----Compiling libft----"
+			@make -C $(LIB_DIR)
+			@$(CC) $(CFLAGS) $(HEADER) $(LIB_DIR)/libft.a $(OBJS_MAN) -o $(NAME)
+			@#clear
+
+bonus:		$(OBJS_BONUS) include/pipex_bonus.h
+			@echo "\033[33m----Compiling libft----"
+			@make -C $(LIB_DIR)
+			@$(CC) $(CFLAGS) $(HEADER_B) $(LIB_DIR)/libft.a $(OBJS_BONUS) -o $(NAME)
+			@#clear
+
+
+%.o:		%.c libft/*.c
+			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
 clean:
-	@rm -rf $(OBJ)
+			@make clean -C $(LIB_DIR)
+			@$(RM) $(OBJS_MAN)
+			@$(RM) $(OBJS_BONUS)
 
-fclean: clean
-	@echo "\n${RED}---------------------- Cleaned! ----------------------\n"
-	@rm -rf $(NAME)
+fclean:		clean
+			@make fclean -C $(LIB_DIR)
+			@$(RM) $(NAME)
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re bonus

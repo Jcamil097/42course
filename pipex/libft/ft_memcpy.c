@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: cmero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 15:21:18 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/08/16 16:02:41 by jumoncad         ###   ########.fr       */
+/*   Created: 2021/08/13 13:37:10 by cmero             #+#    #+#             */
+/*   Updated: 2021/08/13 13:37:11 by cmero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "libft.h"
 
-int	main(int argc, char **argv, char **envp)
+void	*ft_memcpy(void *dst, const void *src, size_t l)
 {
-	if (argc != 5)
-		ft_print_error(22, "Error: wrong number of arguments\n");
-	else
-		pipex(argv, envp);
-	return (0);
+	size_t	x;
+
+	x = 0;
+	if (!dst && !src)
+		return (0);
+	while (x < l)
+	{
+		*((char *)dst + x) = *((const char *)src + x);
+		x++;
+	}
+	return (dst);
 }

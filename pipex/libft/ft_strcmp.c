@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: cmero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 15:21:18 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/08/16 16:02:41 by jumoncad         ###   ########.fr       */
+/*   Created: 2021/08/13 13:44:36 by cmero             #+#    #+#             */
+/*   Updated: 2021/09/14 21:01:06 by cmero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "libft.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (argc != 5)
-		ft_print_error(22, "Error: wrong number of arguments\n");
-	else
-		pipex(argv, envp);
-	return (0);
+	size_t	it;
+
+	it = 0;
+	while (s1[it] && s2[it] && (s1[it] == s2[it]))
+		it++;
+	return ((unsigned char)s1[it] - (unsigned char)s2[it]);
 }

@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: cmero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 15:21:18 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/08/16 16:02:41 by jumoncad         ###   ########.fr       */
+/*   Created: 2021/08/13 13:35:58 by cmero             #+#    #+#             */
+/*   Updated: 2021/08/13 13:35:59 by cmero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "libft.h"
 
-int	main(int argc, char **argv, char **envp)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (argc != 5)
-		ft_print_error(22, "Error: wrong number of arguments\n");
-	else
-		pipex(argv, envp);
-	return (0);
+	if (!lst || !f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

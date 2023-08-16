@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: cmero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 15:21:18 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/08/16 16:02:41 by jumoncad         ###   ########.fr       */
+/*   Created: 2021/08/13 13:37:17 by cmero             #+#    #+#             */
+/*   Updated: 2021/08/13 13:37:18 by cmero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "libft.h"
 
-int	main(int argc, char **argv, char **envp)
+void	*ft_memset(void *str, int x, size_t len)
 {
-	if (argc != 5)
-		ft_print_error(22, "Error: wrong number of arguments\n");
-	else
-		pipex(argv, envp);
-	return (0);
+	size_t			z;
+	unsigned char	*nstr;
+
+	z = 0;
+	nstr = (unsigned char *)str;
+	while (z < len)
+	{
+		nstr[z] = (unsigned char)x;
+		z++;
+	}
+	return (str);
 }

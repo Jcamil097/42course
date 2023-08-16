@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: cmero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 15:21:18 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/08/16 16:02:41 by jumoncad         ###   ########.fr       */
+/*   Created: 2021/08/13 13:41:24 by cmero             #+#    #+#             */
+/*   Updated: 2021/08/13 13:41:25 by cmero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "libft.h"
 
-int	main(int argc, char **argv, char **envp)
+char	*ft_strchr(const char *s, int c)
 {
-	if (argc != 5)
-		ft_print_error(22, "Error: wrong number of arguments\n");
-	else
-		pipex(argv, envp);
-	return (0);
+	int		x;
+	char	sb;
+
+	x = 0;
+	sb = (char)c;
+	while (s[x])
+	{
+		if (s[x] == sb)
+			return ((char *)s + x);
+		x++;
+	}
+	if (s[x] == sb)
+		return ((char *)s + x);
+	return (NULL);
 }

@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonuc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 15:21:18 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/08/16 16:02:41 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/08/16 15:32:05 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/08/16 16:02:31 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../include/pipex_bonus.h"
 
 int	main(int argc, char **argv, char **envp)
 {
-	if (argc != 5)
-		ft_print_error(22, "Error: wrong number of arguments\n");
+	int	fdin;
+	int	fdout;
+	int	i;
+
+	if (argc < 5 || (!ft_strncmp(argv[1], "here_doc", 8) && argc < 6))
+		ft_print_error(22, "Error: invalid number of arguments");
 	else
-		pipex(argv, envp);
+	{
+		i = ft_start_files(argc, argv, &fdin, &fdout);
+		dup2(fdin, STDIN);
+		dup2(fdout, STDOUT);
+		ft_redirect(argv[i++], envp);
+		while (i < argc - 2)
+			ft_redirect(argv[i++], envp);
+		ft_execute(argv[i], envp);
+	}
 	return (0);
 }
