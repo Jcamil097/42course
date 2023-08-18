@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:49:03 by cmero             #+#    #+#             */
-/*   Updated: 2023/08/16 15:07:12 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/08/18 13:39:36 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ char	*ft_strcpy(char *dst, const char *src);
 void	ft_strclr(char *s);
 char	*ft_strndup(const char *s1, size_t n);
 int		get_next_line(int fd, char **line);
-char	*get_next_line_char(int fd);
 
 /*
 **		puts

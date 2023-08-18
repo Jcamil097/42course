@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:24:30 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/08/16 16:02:24 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/08/18 13:39:20 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,15 +112,13 @@ static void	ft_write_to_pipe(int *fd, char **argv)
 
 	limiter = argv[2];
 	write(STDIN, "pipex: here_doc> ", 17);
-	line = get_next_line_char(STDIN);
-	while (line)
+	while (get_next_line(0, &line))
 	{
 		if (!ft_strncmp(limiter, line, ft_strlen(limiter)))
 			break ;
 		write(*fd, line, ft_strlen(line));
 		free(line);
 		write(STDIN, "pipex: here_doc> ", 17);
-		line = get_next_line_char(STDIN);
 	}
 	free(line);
 	close(*fd);

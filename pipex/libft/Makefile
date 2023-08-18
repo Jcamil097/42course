@@ -6,7 +6,7 @@
 #    By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 16:04:52 by jumoncad          #+#    #+#              #
-#    Updated: 2023/08/16 15:07:21 by jumoncad         ###   ########.fr        #
+#    Updated: 2023/08/18 13:39:32 by jumoncad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ FT_LIST		=	ft_atoi.c		ft_bzero.c		ft_calloc.c		ft_isalnum.c	ft_isalpha.c\
 				get_next_line.c\
 				ft_lstnew.c		ft_lstadd_front.c	ft_lstsize.c	ft_lstlast.c	ft_lstadd_back.c\
 				ft_lstdelone.c	ft_lstclear.c		ft_lstiter.c	ft_lstmap.c 	ft_perror.c\
-				ft_print_error.c get_next_line_char.c ft_strndup.c
+				ft_print_error.c ft_strndup.c
 #				ft_lstfindmax_val.c	ft_lstfindmin_val.c\
 #				ft_lstfind_ind_of_max_value.c	ft_lstfind_ind_of_min_value.c\
 
