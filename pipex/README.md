@@ -49,7 +49,7 @@ $ ./pipex example.txt "cat" "grep x" "sed s/l/.../g" outfile.txt
 ### Ejecución de pipex heredoc
 También puede ejecutar pipex con un heredoc, como este:
 ```
-$ ./pipex heredoc LIMITER command1 command2 ... commandn output_file
+$ ./pipex here_doc LIMITER command1 command2 ... commandn output_file
 ```
 Luego se le pedirá que ingrese texto que se usará como entrada para los comandos. En este caso, el archivo de salida especificado no se sobrescribirá sino que se agregará, lo que replica el comportamiento del comando de shell:
 ```
