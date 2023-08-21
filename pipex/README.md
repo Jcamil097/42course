@@ -15,7 +15,7 @@ $ < infile cmd1 | cmd2 > outfile file
 Para compilar, usar ```make```, ```make all``` or ```make bonus```.
 
 ### Ejecucion regular de pipex
-Pipex puede manejar 2. Ejecutar:
+Pipex puede manejar 2 comandos. Ejecutar:
 
 ```
 $ ./pipex input_file command1 command2 output_file
