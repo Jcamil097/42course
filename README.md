@@ -12,5 +12,6 @@ Este repositorio contiene una colección de proyectos que he desarrollado en el 
   <li><a href="https://github.com/Jcamil097/42course/tree/main/get_next_line"> GET_NEXT_LINE</a></li>
   <li><a href="https://github.com/Jcamil097/42course/tree/main/ft_printf">FT_PRINTF</a></li>
   <li><a href="https://github.com/Jcamil097/42course/tree/main/soLong">SO_LONG</a></li>
+  <li><a href="https://github.com/Jcamil097/42course/tree/main/pipex">PIPEX</a></li>
 </ul>
 
