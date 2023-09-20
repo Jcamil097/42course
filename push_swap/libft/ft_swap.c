@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/09 18:33:22 by shovsepy          #+#    #+#             */
-/*   Updated: 2023/09/12 12:50:28 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/09/12 11:09:57 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/09/12 11:10:06 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "../libft/libft.h"
-
-typedef struct s_struct
+void	ft_swap(int *a, int *b)
 {
-	int				*stack_a;
-	int				*stack_b;
-	int				len_stack_a;
-	int				len_stack_b;
-	int				index;
-	struct s_struct	*next;
-}					t_struct;
+	int	c;
 
-#endif
+	c = *a;
+	*a = *b;
+	*b = c;
+}

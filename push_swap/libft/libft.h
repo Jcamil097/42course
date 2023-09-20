@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shovsepy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:17:36 by shovsepy          #+#    #+#             */
-/*   Updated: 2021/06/30 17:40:27 by shovsepy         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:11:05 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void				*ft_memccpy(void *dest, const void *src, int c, size_t len);
 void				*ft_memmove(void *dest, const void *src, size_t len);
 void				*ft_memchr(const void *str, int c, size_t len);
 void				*ft_calloc(size_t count, size_t size);
+void				ft_swap(int *a, int *b);
 
 int					ft_memcmp(const void *str1, const void *str2, size_t len);
 int					ft_isalpha(int c);
