@@ -5,122 +5,105 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 15:21:27 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/05/27 11:13:30 by jumoncad         ###   ########.fr       */
+/*   Created: 2023/03/13 17:15:47 by luisanch          #+#    #+#             */
+/*   Updated: 2023/09/24 13:13:36 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_next(char *buffer)
+char	*ft_get_line(char *str1)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	if (!str1[i])
+		return (NULL);
+	while (str1[i] && str1[i] != '\n')
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 2));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (str1[i] && str1[i] != '\n')
+	{
+		str[i] = str1[i];
+		i++;
+	}
+	if (str1[i] == '\n')
+	{
+		str[i] = str1[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_new_left_str(char *left_str)
 {
 	int		i;
 	int		j;
-	char	*line;
+	char	*str;
 
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (left_str[i] && left_str[i] != '\n')
 		i++;
-	if (!buffer[i])
+	if (!left_str[i])
 	{
-		free(buffer);
+		free(left_str);
 		return (NULL);
 	}
-	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(left_str) - i + 1));
+	if (!str)
+		return (NULL);
 	i++;
 	j = 0;
-	while (buffer[i])
-		line[j++] = buffer[i++];
-	free(buffer);
-	return (line);
+	while (left_str[i])
+		str[j++] = left_str[i++];
+	str[j] = '\0';
+	free(left_str);
+	return (str);
 }
 
-char	*ft_free(char *buffer, char *buf)
+char	*ft_read_to_static_point(int fd, char *stat_point)
 {
-	char	*temp;
+	char	*buff;
+	int		read_bytes;
 
-	temp = ft_strjoin(buffer, buf);
-	free(buffer);
-	return (temp);
-}
-
-char	*ft_set_line(char *buffer)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	if (!buffer[i])
+	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buff)
 		return (NULL);
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	line = ft_calloc(i + 2, sizeof(char));
-	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	read_bytes = 1;
+	while (!ft_strchr(stat_point, '\n') && read_bytes != 0)
 	{
-		line[i] = buffer[i];
-		i++;
-	}
-	if (buffer[i] && buffer[i] == '\n')
-		line[i++] = '\n';
-	return (line);
-}
-
-char	*read_file(int fd, char *res)
-{
-	char	*buffer;
-	int		byte_read;
-
-	if (!res)
-		res = ft_calloc(1, 1);
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	byte_read = 1;
-	while (byte_read > 0)
-	{
-		byte_read = read(fd, buffer, BUFFER_SIZE);
-		if (byte_read == -1)
+		read_bytes = read(fd, buff, BUFFER_SIZE);
+		if (read_bytes == -1)
 		{
-			free(buffer);
+			free(buff);
+			free(stat_point);
 			return (NULL);
 		}
-		buffer[byte_read] = 0;
-		res = ft_free(res, buffer);
-		if (ft_strchr(buffer, '\n'))
-			break ;
+		buff[read_bytes] = '\0';
+		if (!stat_point)
+			stat_point = ft_strdup("");
+		stat_point = ft_strjoin(stat_point, buff);
 	}
-	free(buffer);
-	return (res);
+	free(buff);
+	return (stat_point);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
 	char		*line;
+	static char	*stat_point;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	stat_point = ft_read_to_static_point (fd, stat_point);
+	if (!stat_point)
 		return (NULL);
-	buffer = read_file(fd, buffer);
-	if (!buffer)
-		return (NULL);
-	line = ft_set_line(buffer);
-	buffer = ft_next(buffer);
+	line = ft_get_line (stat_point);
+	stat_point = ft_new_left_str (stat_point);
 	return (line);
-}
-
-int	main(void)
-{
-	char	*line;
-	int		i;
-	int		fd1;
-	fd1 = open("tests/test.txt", O_RDONLY);
-	i = 1;
-	while (i < 7)
-	{
-		line = get_next_line(fd1);
-		printf("line [%02d]: %s", i, line);
-		free(line);
-		i++;
-	}
-	close(fd1);
-	return (0);
 }
