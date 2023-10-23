@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luisanch <luisanch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 17:16:10 by luisanch          #+#    #+#             */
-/*   Updated: 2023/03/14 12:45:25 by luisanch         ###   ########.fr       */
+/*   Created: 2023/10/23 16:48:35 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/10/23 16:48:36 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
