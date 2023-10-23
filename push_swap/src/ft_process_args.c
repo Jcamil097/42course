@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 12:18:01 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/10/06 12:13:32 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:32:05 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*ft_free_and_join(char *s1, char *s2)
 	return (temp);
 }
 
-static int	ft_int_tab_size(char *s)
+static int	ft_size(char *s)
 {
 	int	i;
 	int	counter;
@@ -41,9 +41,9 @@ static int	ft_int_tab_size(char *s)
 
 char	**ft_process_args(int argc, char **argv, t_stack *stack)
 {
+	int		i;
 	char	*s;
 	char	**str;
-	int		i;
 
 	i = 1;
 	s = ft_calloc(1, sizeof(char));
@@ -56,8 +56,8 @@ char	**ft_process_args(int argc, char **argv, t_stack *stack)
 			s = ft_free_and_join(s, " ");
 		i++;
 	}
-	stack->size = ft_int_tab_size(s);
-	stack->max_size = ft_int_tab_size(s);
+	stack->size = ft_size(s);
+	stack->max_size = stack->size;
 	str = ft_split(s, ' ');
 	free(s);
 	return (str);

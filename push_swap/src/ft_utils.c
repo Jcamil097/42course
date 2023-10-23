@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 12:31:40 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/10/05 15:33:23 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:33:43 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,19 @@ void	ft_print(char *str)
 
 void	ft_print_instruction(char *action)
 {
-	static char	*last_action;
-
-	if (!last_action)
-		last_action = ft_strdup(action);
+	if ((!ft_strcmp(action, "sa") && !ft_strcmp(action, "sb"))
+		|| (!ft_strcmp(action, "sb") && !ft_strcmp(action, "sa")))
+		ft_print("ss");
+	else if ((!ft_strcmp(action, "ra") && !ft_strcmp(action, "rb"))
+		|| (!ft_strcmp(action, "rb") && !ft_strcmp(action, "ra")))
+		ft_print("rr");
+	else if ((!ft_strcmp(action, "rra") && !ft_strcmp(action, "rrb"))
+		|| (!ft_strcmp(action, "rrb") && !ft_strcmp(action, "rra")))
+		ft_print("rrr");
 	else
 	{
-		if ((!ft_strcmp(last_action, "sa") && !ft_strcmp(action, "sb"))
-			|| (!ft_strcmp(last_action, "sb") && !ft_strcmp(action, "sa")))
-			ft_print("ss");
-		else if ((!ft_strcmp(last_action, "ra") && !ft_strcmp(action, "rb"))
-			|| (!ft_strcmp(last_action, "rb") && !ft_strcmp(action, "ra")))
-			ft_print("rr");
-		else if ((!ft_strcmp(last_action, "rra") && !ft_strcmp(action, "rrb"))
-			|| (!ft_strcmp(last_action, "rrb") && !ft_strcmp(action, "rra")))
-			ft_print("rrr");
-		else
-		{
-			ft_print(last_action);
-			if (ft_strcmp(action, ""))
-				ft_print(action);
-		}
-		if (last_action)
-			free(last_action);
-		last_action = NULL;
+		if (ft_strcmp(action, ""))
+			ft_print(action);
 	}
 }
 
@@ -61,9 +50,4 @@ int	ft_is_sorted(t_stack *stack)
 		i++;
 	}
 	return (1);
-}
-
-int	ft_is_sign(char c)
-{
-	return (c == '+' || c == '-');
 }

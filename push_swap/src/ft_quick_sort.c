@@ -6,13 +6,13 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:47:57 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/10/05 11:41:42 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:29:41 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	ft_find_max(t_stack *stack)
+int	ft_find_max_int(t_stack *stack)
 {
 	int	i;
 	int	max;
@@ -30,7 +30,7 @@ int	ft_find_max(t_stack *stack)
 	return (max);
 }
 
-int	ft_find_next_max(t_stack *stack, int max)
+int	ft_find_next_max_int(t_stack *stack, int max)
 {
 	int	i;
 	int	next_max;
@@ -66,10 +66,10 @@ static void	ft_push_b_to_a(t_stack *stack_a, t_stack *stack_b)
 
 	while (stack_b->size)
 	{
-		first = ft_find_max(stack_b);
-		second = ft_find_next_max(stack_b, first);
-		first_index = ft_get_index(stack_b, first);
-		second_index = ft_get_index(stack_b, second);
+		first = ft_find_max_int(stack_b);
+		second = ft_find_next_max_int(stack_b, first);
+		first_index = ft_get_index_of_int(stack_b, first);
+		second_index = ft_get_index_of_int(stack_b, second);
 		if (first_index > stack_b->size / 2)
 			first_index = stack_b->size - first_index;
 		if (second_index > stack_b->size / 2)

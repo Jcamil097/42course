@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 12:03:53 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/10/05 15:34:53 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:31:17 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ void	ft_free_all_stacks(t_stack *stack_a, t_stack *stack_b)
 	free(stack_b);
 }
 
-void	ft_error(char **str, t_stack *stack, int *array)
+void	ft_error(char **splitted, t_stack *stack, int *array)
 {
 	int	i;
 
 	i = 0;
 	if (array)
 		free(array);
-	if (str)
+	if (splitted)
 	{
-		while (str[i])
-			free(str[i++]);
-		free(str);
+		while (splitted[i])
+			free(splitted[i++]);
+		free(splitted);
 	}
 	if (stack)
 	{

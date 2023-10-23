@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 19:17:36 by shovsepy          #+#    #+#             */
-/*   Updated: 2023/10/04 13:05:35 by jumoncad         ###   ########.fr       */
+/*   Created: 2021/02/02 19:17:36 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/10/13 12:29:46 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# ifndef MAX_FD
-#  define MAX_FD 42
-# endif
-
 # ifndef BUFF_SIZE
 #  define BUFF_SIZE 42
+# endif
+# ifndef MAX_FD
+#  define MAX_FD 1025
 # endif
 
 void	*ft_bzero(void *s, size_t len);

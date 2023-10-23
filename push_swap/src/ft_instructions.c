@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 10:54:12 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/10/02 13:14:10 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:31:36 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_rotate(t_stack *stack, char c)
 	if (stack->size == 0)
 		return ;
 	temp = stack->stack[0];
-	(void) c;
+	(void)c;
 	ft_memmove(stack->stack, stack->stack + 1, stack->size * sizeof(int));
 	stack->stack[stack->size - 1] = temp;
 	if (c == 'a')
