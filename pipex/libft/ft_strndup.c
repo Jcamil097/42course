@@ -3,25 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:24:40 by cado-car          #+#    #+#             */
-/*   Updated: 2021/10/20 20:33:37 by cado-car         ###   ########.fr       */
+/*   Created: 2021/07/30 20:24:40 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/10/24 11:38:39 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	LIBRARY
-*	#include <string.h>
-*	DESCRIPTION
-*	The strndup() function copies at most n characters from the string s1 always 
-*	NUL terminating the copied string.
-*	PARAMETERS
-*	#1. The string to duplicate.
-*	#2. The number of characters to copy over.
-*	RETURN VALUES
-*	The strdup() function returns thE pointer to the copy of s1.
-*/
 
 #include "libft.h"
 

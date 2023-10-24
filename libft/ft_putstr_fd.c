@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jumoncad <jumoncad@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:08:45 by jumoncad          #+#    #+#             */
-/*   Updated: 2022/12/06 16:41:10 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:36:08 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

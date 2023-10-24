@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/13 13:29:53 by cmero             #+#    #+#             */
-/*   Updated: 2021/08/13 13:29:54 by cmero            ###   ########.fr       */
+/*   Created: 2023/10/24 11:31:48 by jumoncad          #+#    #+#             */
+/*   Updated: 2023/10/24 11:36:08 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "libft.h"
 
