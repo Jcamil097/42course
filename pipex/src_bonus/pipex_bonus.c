@@ -6,7 +6,7 @@
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:21:26 by jumoncad          #+#    #+#             */
-/*   Updated: 2023/10/24 11:39:55 by jumoncad         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:16:31 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,22 @@ void	ft_redirect(char *command, char **envp)
 	if (pipe(fd) == -1)
 		ft_print_error(86, "pipe");
 	pid = fork();
-	if (pid)
+	if (pid) // padre
 	{
+		// cerramos el extremo de escritura
 		close(fd[1]);
-		dup2(fd[0], STDIN);
+		// redirigimos la entrada estandar al extremo de lectura
+		dup2(fd[0], STDIN);        
+		// esperamos a que el hijo termine de ejecutarse
 		waitpid(-1, NULL, WNOHANG);
 	}
-	else
+	else // hijo
 	{
+		// cerramos el extremo de lectura
 		close(fd[0]);
-		dup2(fd[1], STDOUT);
+		// redirigimos la salida estandar al extremo de escritura
+		dup2(fd[1], STDOUT);      
+		// ejecutamos el comando
 		ft_execute(command, envp);
 	}
 }
