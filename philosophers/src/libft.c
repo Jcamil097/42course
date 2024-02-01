@@ -5,42 +5,90 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 13:27:17 by jumoncad          #+#    #+#             */
-/*   Updated: 2024/01/04 17:22:25 by jumoncad         ###   ########.fr       */
+/*   Created: 2024/01/23 12:32:56 by jumoncad          #+#    #+#             */
+/*   Updated: 2024/01/23 12:38:44 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../include/philo.h"
 
-int	ft_atoi(const char *str)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
-	int	res;
-	int	signe;
+	size_t	cont;
 
-	i = 0;
-	signe = 1;
-	res = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == ' '))
-		i++;
-	if (str[i] == '-')
-	{
-		signe *= -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = res * 10 + str[i] - '0';
-		i++;
-	}
-	return (res * signe);
+	cont = 0;
+	while (s[cont] != '\0')
+		cont++;
+	return (cont);
 }
 
-int	ft_isdigit(int character)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (character >= '0' && character <= '9')
-		return (1);
-	return (0);
+	const char	*sr;
+	char		*dt;
+	size_t		x;
+
+	dt = dst;
+	sr = src;
+	x = 0;
+	if (!dst && !src)
+		return (NULL);
+	while (x < n)
+	{
+		dt[x] = sr[x];
+		x++;
+	}
+	return (dst);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*str;
+	size_t	x;
+
+	x = ft_strlen(s1);
+	str = (char *)malloc(sizeof(*s1) * (x + 1));
+	if (str)
+		ft_memcpy(str, s1, x + 1);
+	return (str);
+}
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t			cont;
+	unsigned int	x;
+
+	x = 0;
+	cont = ft_strlen(src);
+	if (!size)
+		return (cont);
+	while (src[x] != '\0' && x < size - 1)
+	{
+		dest[x] = src[x];
+		x++;
+	}
+	dest[x] = '\0';
+	return (cont);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+	char	*src;
+	size_t	len_src;
+
+	if (!s)
+		return (0);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	src = (char *)s + start;
+	len_src = ft_strlen(src);
+	if (len_src < len)
+		len = ++len_src;
+	else
+		len++;
+	str = malloc(sizeof(char) * len);
+	if (str)
+		ft_strlcpy(str, src, len);
+	return (str);
 }

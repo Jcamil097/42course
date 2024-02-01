@@ -5,102 +5,98 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 12:38:37 by jumoncad          #+#    #+#             */
-/*   Updated: 2024/01/04 17:21:41 by jumoncad         ###   ########.fr       */
+/*   Created: 2024/01/23 12:08:43 by jumoncad          #+#    #+#             */
+/*   Updated: 2024/01/30 13:41:50 by jumoncad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../include/philo.h"
 
-void	freeall(t_info *data)
+void	exit_and_message(char *message)
 {
-	int	i;
-
-	i = -1;
-	while (++i < data->num_philo)
-	{
-		pthread_mutex_destroy(&data->philo[i].mut_fork_left);
-		pthread_mutex_destroy(data->philo[i].mut_fork_right);
-	}
-	free(data->philo);
-	pthread_mutex_destroy(&data->print);
-	pthread_mutex_destroy(&data->mutex_stop);
-	pthread_mutex_destroy(&data->mutex_eat);
-	pthread_mutex_destroy(&data->mutex_dead);
+	printf("%s", message);
+	exit(1);
 }
 
-int	check_argv(char **argv)
+t_rules	init_struct(char **argv)
 {
-	int	num;
+	t_rules	rules;
+	int		i;
 
-	num = ft_atoi(argv[1]);
-	if (num < 2 || num > 200)
-		return (1);
-	num = ft_atoi(argv[2]);
-	if (num < 60)
-		return (1);
-	num = ft_atoi(argv[3]);
-	if (num < 60)
-		return (1);
-	num = ft_atoi(argv[4]);
-	if (num < 60)
-		return (1);
+	i = 0;
+	rules.num_of_philo = ft_atoi(argv[1]);
+	rules.time_to_die = ft_atoi(argv[2]);
+	rules.time_to_eat = ft_atoi(argv[3]);
+	rules.time_to_sleep = ft_atoi(argv[4]);
+	rules.num_philo_eat = -1;
 	if (argv[5])
+		rules.num_philo_eat = ft_atoi(argv[5]);
+	if (!argv[0])
+		free_split(argv);
+	rules.start_time = ft_get_time();
+	rules.forks = malloc(sizeof(pthread_mutex_t) * rules.num_of_philo);
+	while (i < rules.num_of_philo)
 	{
-		num = ft_atoi(argv[5]);
-		if (num < 1)
-			return (1);
+		pthread_mutex_init(&rules.forks[i], NULL);
+		i++;
 	}
-	return (0);
+	return (rules);
 }
 
-int	var_init(t_info *data, char **argv)
+void	philos_aux(t_rules rules, t_philosopher *philos, int i)
 {
-	pthread_mutex_init(&data->print, NULL);
-	pthread_mutex_init(&data->mutex_stop, NULL);
-	pthread_mutex_init(&data->mutex_eat, NULL);
-	pthread_mutex_init(&data->mutex_dead, NULL);
-	data->stop = 0;
-	data->philo = malloc(sizeof(t_philo) * data->num_philo);
-	if (data->philo == NULL)
-		return (2);
-	if (check_num(argv))
+	philos[i].left_fork = &rules.forks[i];
+	if (i != 0)
+		philos[i].rigth_fork = &rules.forks[i - 1];
+	else
+		philos[i].rigth_fork = &rules.forks[rules.num_of_philo - 1];
+	philos[i].id = i + 1;
+	philos[i].eaten = 0;
+	philos[i].rules = &rules;
+}
+
+void	init_philos(t_rules rules, t_philosopher *philos, int i, int all_alive)
+{
+	pthread_mutex_t	*all_alive_mutex;
+	pthread_t		*thread;
+
+	thread = malloc(sizeof(pthread_t) * rules.num_of_philo);
+	all_alive_mutex = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(all_alive_mutex, NULL);
+	philos = malloc(sizeof(t_philosopher) * (rules.num_of_philo));
+	while (i < rules.num_of_philo)
 	{
-		printf("Error: invalid arguments.\n");
-		return (1);
+		philos_aux(rules, philos, i);
+		philos[i].all_alive = &all_alive;
+		philos[i].all_alive_mutex = all_alive_mutex;
+		philos[i].thread = thread[i];
+		pthread_create(&philos[i].thread, NULL, &routine, &philos[i]);
+		i++;
 	}
-	data->philo_eat = 0;
-	data->num_philo = ft_atoi(argv[1]);
-	data->time_die = ft_atoi(argv[2]);
-	data->time_eat = ft_atoi(argv[3]);
-	data->time_sleep = ft_atoi(argv[4]);
-	if (argv[5])
-		data->num_eat = ft_atoi(argv[5]);
-	if (argv[5] && data->num_eat == 0)
-		return (1);
-	return (0);
+	while (i--)
+		pthread_join(philos[i].thread, NULL);
+	pthread_mutex_destroy(all_alive_mutex);
+	free(all_alive_mutex);
+	free(rules.forks);
+	free(thread);
+	free(philos);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_info	data;
+	t_rules			rules;
+	t_philosopher	*philos;
+	int				i;
+	int				all_alive;
 
-	if (argc != 5 && argc != 6)
-	{
-		printf("Error: wrong number of arguments\n");
-		return (1);
-	}
-	if (check_argv(argv))
-	{
-		printf("Error: wrong argument\n");
-		return (1);
-	}
-	if (var_init(&data, argv) == 1)
-	{
-		free(data.philo);
-		return (0);
-	}
-	philo_init(&data);
-	freeall(&data);
+	if (argc != 2 && argc != 5 && argc != 6)
+		exit_and_message("Error: Wrong number of arguments\n");
+	argv = arg_error_check(argv, 1);
+	check_arg_limits(argv);
+	rules = init_struct(argv);
+	i = 0;
+	all_alive = 1;
+	philos = NULL;
+	init_philos(rules, philos, i, all_alive);
 	return (0);
 }

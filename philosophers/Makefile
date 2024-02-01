@@ -1,45 +1,41 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jumoncad <jumoncad@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/05 10:50:07 by jumoncad          #+#    #+#              #
-#    Updated: 2024/01/04 17:37:11 by jumoncad         ###   ########.fr        #
+#    Created: 2024/01/23 12:07:26 by jumoncad          #+#    #+#              #
+#    Updated: 2024/02/01 13:06:04 by jumoncad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-CFLAGS = -Wall -Wextra -Werror
+CC = gcc -Wall -Werror -Wextra -g3 #-fsanitize=thread 
 
-RM = rm -rf
+RM = rm -f
 
-DEF_COLOR = \033[0;39m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
+SRCS = ${shell find ./src -name "*.c"}
 
-SRCS = 	${shell find ./src -name "*.c"}
+OBJS = $(SRCS:.c=.o)
 
-$(NAME) :
-	@gcc $(CFLAGS) $(SRCS) -o $(NAME)
-	@echo "\033[0;92m✅--P̲h̲i̲l̲o̲s̲o̲p̲h̲e̲r̲ compiled--✅"
-	@echo "$(YELLOW)\n!Use this command ./philo 5 500 100 100 [1]\n$(DEF_COLOR)"
-	@echo "$(YELLOW)philosophers / time_to_die / time_to_eat / time_to_sleep / [number_of_times_each_philosopher_must_eat]\n$(DEF_COLOR)"
+all: $(NAME)
 
-all : $(NAME)
+%.o: %.c
+	@$(CC) -c $< -o $@
 
-clean :
+$(NAME): $(OBJS)
+	@$(CC) $(OBJS) -o $(NAME)
+
+clean:
+	@$(RM) $(OBJS)
+
+fclean:	clean
 	@$(RM) $(NAME)
 
-fclean : clean
-	@$(RM) $(NAME)
-	@echo "\033[0;91m❌--P̲h̲i̲l̲o̲s̲o̲p̲h̲e̲r̲  cleaned--❌"
-	@sleep 1
-	@Clear
+limpito: all clean
 
-re : fclean all
+re:	fclean all
 
-.PHONY : all clean fclean re
+.PHONY:	all clean fclean re
